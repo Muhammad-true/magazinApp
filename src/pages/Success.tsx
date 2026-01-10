@@ -12,7 +12,7 @@ const Success = () => {
 
   useEffect(() => {
     const savedLicense = localStorage.getItem('licenseData')
-    const savedUserData = localStorage.getItem('userData')
+    // const savedUserData = localStorage.getItem('userData')
 
     if (!savedLicense) {
       navigate('/register')

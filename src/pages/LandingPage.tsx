@@ -14,15 +14,18 @@ const LandingPage = () => {
     setIsAuthenticated(apiService.isAuthenticated())
   }, [])
   
-  // Безопасное получение массива из переводов
-  const getFeaturesArray = (key: string): string[] => {
-    try {
-      const features = t(key, { returnObjects: true })
-      return Array.isArray(features) ? features : []
-    } catch {
-      return []
-    }
-  }
+  // Безопасное получение массива из переводов (закомментировано, не используется)
+  // const getFeaturesArray = (key: string): string[] => {
+  //   try {
+  //     const features = t(key, { returnObjects: true })
+  //     if (Array.isArray(features)) {
+  //       return features.filter((item): item is string => typeof item === 'string')
+  //     }
+  //     return []
+  //   } catch {
+  //     return []
+  //   }
+  // }
   const [step, setStep] = useState<'info' | 'business-type' | 'register' | 'shop-selection' | 'success'>('info')
   const [businessType, setBusinessType] = useState<'pharmacy' | 'clothing' | ''>('')
   const [loading, setLoading] = useState(false)
@@ -47,7 +50,7 @@ const LandingPage = () => {
   const [cities, setCities] = useState<City[]>([])
   const [citiesLoading, setCitiesLoading] = useState(false)
   const [citiesError, setCitiesError] = useState<string | null>(null)
-  const [licenseData, setLicenseData] = useState<any>(null)
+  const [licenseData] = useState<any>(null)
 
   // Загрузка городов при монтировании компонента
   useEffect(() => {
@@ -290,23 +293,30 @@ const LandingPage = () => {
       setLoadingShops(false)
     }
   }
-
-  const handleGetStarted = async () => {
-    if (apiService.isAuthenticated()) {
-      // Если авторизован - загружаем магазины и показываем выбор
-      const loadedShops = await loadShops()
-      if (loadedShops.length > 0) {
-        setStep('shop-selection')
-      } else {
-        // Если магазинов нет - переходим к созданию нового
-        setIsCreatingNewShop(true)
-        setStep('business-type')
-      }
-    } else {
-      // Если не авторизован - переходим к регистрации
-      setStep('business-type')
+  
+  // Используем loadShops в других местах
+  useEffect(() => {
+    if (isAuthenticated && step === 'shop-selection') {
+      loadShops()
     }
-  }
+  }, [isAuthenticated, step])
+
+  // const handleGetStarted = async () => {
+  //   if (apiService.isAuthenticated()) {
+  //     // Если авторизован - загружаем магазины и показываем выбор
+  //     const loadedShops = await loadShops()
+  //     if (loadedShops.length > 0) {
+  //       setStep('shop-selection')
+  //     } else {
+  //       // Если магазинов нет - переходим к созданию нового
+  //       setIsCreatingNewShop(true)
+  //       setStep('business-type')
+  //     }
+  //   } else {
+  //     // Если не авторизован - переходим к регистрации
+  //     setStep('business-type')
+  //   }
+  // }
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault()
