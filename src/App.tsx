@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
+import InstallPrompt from './components/InstallPrompt'
 import Account from './pages/Account'
 import Documentation from './pages/Documentation'
 import Downloads from './pages/Downloads'
@@ -10,7 +11,6 @@ import Payment from './pages/Payment'
 import Register from './pages/Register'
 import ShopSelection from './pages/ShopSelection'
 import Success from './pages/Success'
-import InstallPrompt from './components/InstallPrompt'
 import { registerInstallPrompt } from './utils/pwa'
 
 function App() {

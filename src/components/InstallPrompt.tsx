@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { isMobile, isPWAInstalled, showInstallPrompt } from '../utils/pwa'
 import './InstallPrompt.css'
 
