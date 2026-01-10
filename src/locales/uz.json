@@ -1,0 +1,430 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "features": "Imkoniyatlar",
+    "pricing": "Narxlar",
+    "register": "Ro'yxatdan o'tish",
+    "login": "Kirish",
+    "account": "Mening hisobim",
+    "logout": "Chiqish",
+    "downloads": "Yuklab olish",
+    "documentation": "Hujjatlar"
+  },
+  "hero": {
+    "title": "Zamonaviy kassa tizimi",
+    "titleSpan1": "do'konlar",
+    "titleSpan2": "aptekalar",
+    "subtitle": "Tezkor sotuv, ombor, markirovka, apteka rejimi, bulut sinxronizatsiyasi va qulay obuna murakkabsiz.",
+    "cta": "Ishni boshlash",
+    "demo": "Demo so'rang"
+  },
+  "features": {
+    "title": "Asosiy imkoniyatlar",
+    "sales": {
+      "title": "Sotuvlar",
+      "desc": "Tezkor sotuvlar, skanerlar, chek bosish, qaytarishlar, oflayn rejim."
+    },
+    "warehouse": {
+      "title": "Ombor",
+      "desc": "Qoldiqlar, yetkazib berishlar, hisobdan chiqarishlar, inventarizatsiya va tahlil."
+    },
+    "pharmacy": {
+      "title": "Aptekalar",
+      "desc": "Dori vositalari ma'lumotnomasi, retseptlar, seriya/muddati, markirovka, dozalash."
+    }
+  },
+  "pricing": {
+    "title": "Narxlar",
+    "freeTrial": "7 kun bepul",
+    "freeTrialDescription": "Barcha imkoniyatlarni 7 kun davomida bepul sinab ko'ring",
+    "subscription1": {
+      "name": "Asosiy",
+      "price": "20$",
+      "period": "/ oy",
+      "description": "Bir do'kon (3 tagacha kassa)",
+      "features": ["1 do'kon", "3 tagacha kassa", "Barcha asosiy funksiyalar", "Qo'llab-quvvatlash"],
+      "button": "Tanlash"
+    },
+    "subscription2": {
+      "name": "Rivojlangan",
+      "price": "30$",
+      "period": "/ oy",
+      "description": "Bir do'kon (10 tagacha kassa)",
+      "features": ["1 do'kon", "10 tagacha kassa", "Barcha asosiy funksiyalar", "Ustuvor qo'llab-quvvatlash"],
+      "button": "Tanlash"
+    },
+    "oneTime": {
+      "name": "Bir martalik sotib olish",
+      "price": "2000$",
+      "period": "bir martalik",
+      "description": "Umrbod litsenziya",
+      "features": ["1 do'kon", "Cheksiz kassa", "Barcha funksiyalar", "Umrbod qo'llab-quvvatlash", "Yangilanishlar"],
+      "button": "Tanlash"
+    },
+    "perMonth": "oyiga",
+    "perYear": "yiliga",
+    "oneTimeLabel": "bir martalik",
+    "select": "Tanlash"
+  },
+  "register": {
+    "title": "Do'kon yoki apteka ro'yxatdan o'tkazish",
+    "subtitle": "Hisob yaratish uchun formani to'ldiring",
+    "personalInfo": "Shaxsiy ma'lumotlar",
+    "shopInfo": "Do'kon/Apteka ma'lumotlari",
+    "name": "To'liq ism",
+    "email": "Email",
+    "password": "Parol",
+    "phone": "Telefon",
+    "shopName": "Do'kon/Apteka nomi",
+    "inn": "INN",
+    "description": "Tavsif",
+    "address": "Manzil",
+    "city": "Shahar",
+    "selectCity": "Shaharni tanlang",
+    "submit": "Ro'yxatdan o'tish",
+    "alreadyHaveAccount": "Hisobingiz bormi?",
+    "login": "Kirish"
+  },
+  "businessType": {
+    "title": "Biznes turini tanlang",
+    "subtitle": "Tizimni sozlash uchun biznes turingizni tanlang",
+    "pharmacy": "Apteka",
+    "pharmacyDesc": "Aptekalar va farmatsevtika nuqtalari uchun",
+    "clothing": "Kiyim do'koni",
+    "clothingDesc": "Kiyim va aksessuarlar do'konlari uchun"
+  },
+  "subscription": {
+    "title": "Obuna rejasini tanlang",
+    "subtitle": "Biznesingiz uchun to'g'ri rejani tanlang",
+    "processing": "Qayta ishlanmoqda...",
+    "error": "Rejalarni yuklashda xatolik"
+  },
+  "payment": {
+    "title": "Obuna to'lovi",
+    "subtitle": "Litsenziyani faollashtirish uchun to'lovni yakunlang",
+    "plan": "Reja",
+    "amount": "Summa",
+    "provider": "To'lov tizimi",
+    "transactionId": "Tranzaksiya ID",
+    "pay": "To'lash",
+    "processing": "To'lov qayta ishlanmoqda...",
+    "success": "To'lov muvaffaqiyatli!",
+    "note": "Demo versiyada to'lov avtomatik qayta ishlanadi"
+  },
+  "success": {
+    "title": "Ro'yxatdan o'tish muvaffaqiyatli!",
+    "subtitle": "Litsenziyangiz faollashtirildi",
+    "shopId": "Do'kon ID",
+    "licenseKey": "Litsenziya kaliti",
+    "copy": "Nusxalash",
+    "copied": "Nusxalandi!",
+    "expiresAt": "Muddati tugaydi",
+    "instructions": "Ushbu ma'lumotlarni xavfsiz joyda saqlang. Ilovani faollashtirish uchun ular kerak bo'ladi.",
+    "download": "Ma'lumotlarni yuklab olish",
+    "continue": "Bosh sahifaga"
+  },
+  "login": {
+    "title": "Hisobga kirish",
+    "subtitle": "Do'koningizni boshqarish uchun hisobingizga kiring",
+    "phone": "Telefon",
+    "phonePlaceholder": "+79991234567",
+    "password": "Parol",
+    "submit": "Kirish",
+    "noAccount": "Hisobingiz yo'qmi?",
+    "register": "Ro'yxatdan o'tish",
+    "forgotPassword": "Parolni unutdingizmi?",
+    "processing": "Kirilmoqda..."
+  },
+  "account": {
+    "title": "Mening hisobim",
+    "subtitle": "Ma'lumotlaringiz va litsenziyalaringizni boshqaring",
+    "personalInfo": "Shaxsiy ma'lumotlar",
+    "shopInfo": "Do'kon ma'lumotlari",
+    "licenses": "Mening litsenziyalarim",
+    "noLicenses": "Hozircha litsenziyangiz yo'q",
+    "licenseKey": "Litsenziya kaliti",
+    "subscriptionType": "Obuna turi",
+    "status": "Holat",
+    "expiresAt": "Muddati tugaydi",
+    "daysRemaining": "Qolgan kunlar",
+    "active": "Faol",
+    "expired": "Muddati o'tgan",
+    "cancelled": "Bekor qilingan",
+    "pending": "Kutilmoqda",
+    "monthly": "Oylik",
+    "yearly": "Yillik",
+    "lifetime": "Umrbod",
+    "loading": "Ma'lumotlar yuklanmoqda...",
+    "error": "Ma'lumotlarni yuklashda xatolik",
+    "logout": "Hisobdan chiqish",
+    "renew": "Obunani uzaytirish"
+  },
+  "shopSelection": {
+    "title": "Do'konni tanlash",
+    "subtitle": "Obuna uchun do'konni tanlang yoki yangisini yarating",
+    "selectShop": "Do'konni tanlang",
+    "continue": "Davom etish",
+    "createNew": "Yangi do'kon yaratish",
+    "createFirstShop": "Birinchi do'konni yaratish",
+    "noShops": "Hozircha do'konlaringiz yo'q",
+    "loading": "Do'konlar yuklanmoqda...",
+    "error": "Do'konlarni yuklashda xatolik"
+  },
+  "downloads": {
+    "title": "Dasturlarni yuklab olish",
+    "subtitle": "Biznesingiz uchun kerakli versiyani tanlang va yuklab oling",
+    "download": "Yuklab olish",
+    "downloading": "Yuklanmoqda",
+    "comingSoon": "Tez orada",
+    "pharmacy": {
+      "title": "Aptekalar uchun",
+      "description": "Aptekalar va farmatsevtika nuqtalari uchun maxsus versiyalar",
+      "windows": {
+        "title": "Windows uchun Apteka",
+        "description": "Windows uchun aptekani boshqarish uchun to'liq funksional dastur"
+      },
+      "android": {
+        "title": "Android uchun Apteka",
+        "description": "Android qurilmalarda apteka bilan ishlash uchun mobil ilova"
+      }
+    },
+    "shop": {
+      "title": "Do'konlar uchun",
+      "description": "Oddiy do'konlar va savdo nuqtalari uchun dastur versiyalari",
+      "windows": {
+        "title": "Windows uchun Do'kon",
+        "description": "Windows uchun do'konni boshqarish dasturi"
+      },
+      "android": {
+        "title": "Android uchun Do'kon",
+        "description": "Android uchun do'kon bilan ishlash mobil ilovasi"
+      }
+    },
+    "server": {
+      "title": "Server versiyasi (Asosiy-server kassa 1)",
+      "description": "Bir nechta kassalarni markazlashtirilgan boshqarish uchun server versiyasi",
+      "platform": "Windows Server",
+      "windows": {
+        "title": "Windows Server",
+        "description": "Kassa tarmog'ini boshqarish uchun asosiy server. Asosiy kompyuterga o'rnatiladi"
+      }
+    },
+    "standalone": {
+      "title": "Universal dasturlar",
+      "description": "Biznes turiga bog'liq bo'lmagan ish uchun asosiy dastur versiyalari",
+      "windows": {
+        "title": "Windows uchun Dastur",
+        "description": "Windows uchun universal dastur"
+      },
+      "android": {
+        "title": "Android uchun Dastur",
+        "description": "Android uchun universal mobil ilova"
+      }
+    }
+  },
+  "docs": {
+    "title": "Hujjatlar",
+    "subtitle": "O'rnatish, sozlash va foydalanish bo'yicha bosqichma-bosqich ko'rsatmalar",
+    "installation": {
+      "title": "O'rnatish",
+      "windows": {
+        "title": "Windows uchun o'rnatish",
+        "step1": {
+          "title": "O'rnatish faylini yuklab oling",
+          "description": "Yuklab olish sahifasiga o'ting va Windows versiyasini yuklab oling. Fayl .exe kengaytmasiga ega bo'ladi"
+        },
+        "step2": {
+          "title": "O'rnatuvchini ishga tushiring",
+          "description": "Yuklangan faylga ikki marta bosing. Xavfsizlik ogohlantirishi paydo bo'lsa, 'Ruxsat berish' yoki 'Ishga tushirish' tugmasini bosing"
+        },
+        "step3": {
+          "title": "O'rnatish ustasining ko'rsatmalariga amal qiling",
+          "description": "O'rnatish papkasini tanlang (standart - Program Files), litsenziya shartlarini qabul qiling va 'O'rnatish' tugmasini bosing"
+        },
+        "step4": {
+          "title": "O'rnatish yakunlanishini kuting",
+          "description": "O'rnatish jarayoni bir necha daqiqa davom etadi. O'rnatuvchi oynasini yakunlanmaguncha yopmang"
+        },
+        "step5": {
+          "title": "Dasturni ishga tushiring",
+          "description": "O'rnatishdan keyin dastur Start menyusida mavjud bo'ladi. Agar yorliq yaratilgan bo'lsa, ish stolidan ham ishga tushirishingiz mumkin"
+        }
+      },
+      "android": {
+        "title": "Android uchun o'rnatish",
+        "step1": {
+          "title": "APK faylini yuklab oling",
+          "description": "Yuklab olish sahifasiga o'ting va Android versiyasini yuklab oling. Fayl .apk kengaytmasiga ega bo'ladi"
+        },
+        "step2": {
+          "title": "Noma'lum manbalardan o'rnatishga ruxsat bering",
+          "description": "Android sozlamalarida 'Xavfsizlik' bo'limiga o'ting va brauzeringiz uchun 'Noma'lum manbalardan o'rnatish'ni yoqing"
+        },
+        "step3": {
+          "title": "Ilovani o'rnating",
+          "description": "Yuklangan APK faylini oching va 'O'rnatish' tugmasini bosing. O'rnatish yakunlanishini kuting"
+        },
+        "step4": {
+          "title": "Ilovani ishga tushiring",
+          "description": "O'rnatishdan keyin asosiy ekranda yoki ilovalar menyusida ilova ikonkasini toping va ishga tushiring"
+        }
+      },
+      "server": {
+        "title": "Server versiyasini o'rnatish",
+        "step1": {
+          "title": "Serverni tayyorlang",
+          "description": "Serverni Windows Server yoki Windows 10/11 o'rnatilganligiga ishonch hosil qiling. Kamida 4GB RAM va 10GB bo'sh joy talab qilinadi"
+        },
+        "step2": {
+          "title": "Server versiyasini yuklab oling",
+          "description": "Asosiy yuklab olish sahifasidan server versiyasini yuklab oling"
+        },
+        "step3": {
+          "title": "Dasturni o'rnating",
+          "description": "O'rnatuvchini administrator sifatida ishga tushiring. O'rnatish papkasini tanlang va ko'rsatmalarga amal qiling"
+        },
+        "step4": {
+          "title": "Tarmoq kirishini sozlang",
+          "description": "Kassalarning serverni kirishi uchun fayervol va tarmoq parametrlarini sozlang. Standart port: 8080"
+        }
+      }
+    },
+    "configuration": {
+      "title": "Sozlash",
+      "firstLaunch": {
+        "title": "Birinchi ishga tushirish",
+        "step1": {
+          "title": "Litsenziya kalitini kiriting",
+          "description": "Birinchi ishga tushirishda dastur litsenziya kalitini so'raydi. Ro'yxatdan o'tish va to'lovdan keyin olgan kalitingizni kiriting"
+        },
+        "step2": {
+          "title": "Administrator yarating",
+          "description": "Foydalanuvchi nomi va parol bilan administrator hisobini yarating. Ushbu hisob sozlamalarga to'liq kirish huquqiga ega bo'ladi"
+        },
+        "step3": {
+          "title": "Biznes turini tanlang",
+          "description": "Biznes turingizni belgilang: do'kon yoki apteka. Bu mavjud funksiyalar va modullarni belgilaydi"
+        }
+      },
+      "shopSettings": {
+        "title": "Do'kon sozlamalari",
+        "step1": {
+          "title": "Do'kon ma'lumotlarini to'ldiring",
+          "description": "'Sozlamalar' → 'Do'kon' bo'limida nom, INN, manzil va do'koningiz haqidagi boshqa ma'lumotlarni kiriting"
+        },
+        "step2": {
+          "title": "Valyuta va soliqlarni sozlang",
+          "description": "Ish valyutasini tanlang (so'm, dollar va boshqalar) va kerak bo'lsa, soliq stavkalarini sozlang"
+        },
+        "step3": {
+          "title": "Chek bosishni sozlang",
+          "description": "Chek printerini ulang va bosish formatini sozlang. Jismoniy printer yoki PDF saqlash uchun virtual printerdan foydalanishingiz mumkin"
+        }
+      },
+      "cashRegisters": {
+        "title": "Kassa sozlamalari",
+        "step1": {
+          "title": "Kassa qo'shing",
+          "description": "'Sozlamalar' → 'Kassalar' bo'limida 'Kassa qo'shish' tugmasini bosing. Nomni kiriting va kassa turini tanlang"
+        },
+        "step2": {
+          "title": "Uskunani ulang",
+          "description": "Shtrix-kod skaneri, tarozi (agar kerak bo'lsa) va boshqa uskunani ulang. Dastur ulangan qurilmalarni avtomatik aniqlaydi"
+        },
+        "step3": {
+          "title": "Kirish huquqlarini sozlang",
+          "description": "Har bir kassa uchun foydalanuvchi kirish huquqlarini sozlang. Ma'lum funksiyalarga kirishni cheklashingiz mumkin"
+        }
+      }
+    },
+    "usage": {
+      "title": "Foydalanish",
+      "sales": {
+        "title": "Sotuvlar bilan ishlash",
+        "step1": {
+          "title": "Sotuvlar bo'limini oching",
+          "description": "Asosiy menyuda 'Sotuvlar'ni tanlang yoki asosiy ekranda tegishli tugmani bosing"
+        },
+        "step2": {
+          "title": "Chekka mahsulotlarni qo'shing",
+          "description": "Mahsulotlarni qo'shish uchun shtrix-kod skaneri yoki nom bo'yicha qidiruvdan foydalaning. Miqdorni qo'lda ko'rsatishingiz mumkin"
+        },
+        "step3": {
+          "title": "Chegirmalarni qo'llang",
+          "description": "Agar kerak bo'lsa, mahsulotlarga yoki butun chekka chegirmalarni qo'llang. Foizli yoki belgilangan chegirmalardan foydalanishingiz mumkin"
+        },
+        "step4": {
+          "title": "Sotuvni yakunlang",
+          "description": "To'lov usulini tanlang (naqd, karta, o'tkazma) va sotuvni yakunlang. Chek avtomatik bosiladi va saqlanadi"
+        }
+      },
+      "warehouse": {
+        "title": "Ombor boshqaruvi",
+        "step1": {
+          "title": "Mahsulotlarni qo'shing",
+          "description": "'Ombor' → 'Mahsulotlar' bo'limida yangi mahsulotlarni qo'shing. Nom, artikul, narx, qoldiq va boshqa ma'lumotlarni ko'rsating"
+        },
+        "step2": {
+          "title": "Inventarizatsiyani o'tkazing",
+          "description": "Haqiqiy qoldiqlarni tizim ma'lumotlari bilan solishtirish uchun 'Inventarizatsiya' funksiyasidan foydalaning"
+        },
+        "step3": {
+          "title": "Yetkazib berish va hisobdan chiqarishlarni rasmiylashtiring",
+          "description": "'Ombor' bo'limida ta'minotchilardan mahsulotlarni qabul qilish yoki kerak bo'lganda hisobdan chiqarishlarni rasmiylashtiring"
+        }
+      },
+      "reports": {
+        "title": "Hisobotlar va tahlil",
+        "step1": {
+          "title": "Hisobotlar bo'limini oching",
+          "description": "Asosiy menyuda sotuvlar, qoldiqlar va foyda bo'yicha turli hisobotlarni ko'rish uchun 'Hisobotlar'ni tanlang"
+        },
+        "step2": {
+          "title": "Hisobot turini tanlang",
+          "description": "Kerakli hisobotni tanlang: davr bo'yicha sotuvlar, mahsulot qoldiqlari, foyda, mashhur mahsulotlar va boshqalar"
+        },
+        "step3": {
+          "title": "Parametrlarni sozlang va eksport qiling",
+          "description": "Davr va boshqa hisobot parametrlarini ko'rsating. Hisobotni ekranda ko'rish, chop etish yoki Excel/PDF ga eksport qilish mumkin"
+        }
+      }
+    },
+    "troubleshooting": {
+      "title": "Muammolarni hal qilish",
+      "commonIssues": {
+        "title": "Keng tarqalgan muammolar",
+        "q1": {
+          "question": "Dastur ishga tushmayapti",
+          "answer": "Eng so'nggi .NET Framework o'rnatilganligiga ishonch hosil qiling. Kompyuteringizni qayta ishga tushiring va dasturni administrator sifatida ishga tushirishga harakat qiling"
+        },
+        "q2": {
+          "question": "Shtrix-kod skaneri ishlamayapti",
+          "answer": "Skanerning kompyuterga ulanishini tekshiring. Drayverlar o'rnatilganligiga ishonch hosil qiling. Dastur sozlamalarida skaner kirish qurilmasi sifatida tanlanganligini tekshiring"
+        },
+        "q3": {
+          "question": "Cheklar bosilmayapti",
+          "answer": "Printer ulanishini va qog'oz mavjudligini tekshiring. Dastur sozlamalarida to'g'ri printer tanlanganligiga ishonch hosil qiling. Test sahifasini bosishga harakat qiling"
+        }
+      },
+      "support": {
+        "title": "Texnik yordam",
+        "description": "Agar muammoni o'zingiz hal qila olmadingiz, yordam xizmatimizga murojaat qiling:"
+      }
+    }
+  },
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "error": "Xatolik",
+    "success": "Muvaffaqiyatli",
+    "required": "Majburiy maydon",
+    "optional": "ixtiyoriy",
+    "invalidEmail": "Noto'g'ri email",
+    "invalidPhone": "Noto'g'ri telefon raqami",
+    "minLength": "Kamida {{count}} belgi",
+    "back": "Orqaga",
+    "next": "Keyingi",
+    "cancel": "Bekor qilish",
+    "retry": "Qayta urinish"
+  }
+}
+

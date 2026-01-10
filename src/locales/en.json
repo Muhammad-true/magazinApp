@@ -1,0 +1,430 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "register": "Register",
+    "login": "Login",
+    "account": "My Account",
+    "logout": "Logout",
+    "downloads": "Downloads",
+    "documentation": "Documentation"
+  },
+  "hero": {
+    "title": "Modern POS system for",
+    "titleSpan1": "stores",
+    "titleSpan2": "pharmacies",
+    "subtitle": "Fast sales, warehouse, labeling, pharmacy mode, cloud sync and convenient subscription without complications.",
+    "cta": "Get Started",
+    "demo": "Request Demo"
+  },
+  "features": {
+    "title": "Main Features",
+    "sales": {
+      "title": "Sales",
+      "desc": "Fast sales, scanners, receipt printing, returns, offline mode."
+    },
+    "warehouse": {
+      "title": "Warehouse",
+      "desc": "Stock, supplies, write-offs, inventory and analytics."
+    },
+    "pharmacy": {
+      "title": "Pharmacies",
+      "desc": "Drug directory, prescriptions, batch/expiry, labeling, dosages."
+    }
+  },
+  "pricing": {
+    "title": "Pricing",
+    "freeTrial": "7 days free",
+    "freeTrialDescription": "Try all features for free for 7 days",
+    "subscription1": {
+      "name": "Basic",
+      "price": "20$",
+      "period": "/ month",
+      "description": "One store (up to 3 cash registers)",
+      "features": ["1 store", "Up to 3 cash registers", "All basic features", "Support"],
+      "button": "Choose"
+    },
+    "subscription2": {
+      "name": "Advanced",
+      "price": "30$",
+      "period": "/ month",
+      "description": "One store (up to 10 cash registers)",
+      "features": ["1 store", "Up to 10 cash registers", "All basic features", "Priority support"],
+      "button": "Choose"
+    },
+    "oneTime": {
+      "name": "One-time purchase",
+      "price": "2000$",
+      "period": "one-time",
+      "description": "Lifetime license",
+      "features": ["1 store", "Unlimited cash registers", "All features", "Lifetime support", "Updates"],
+      "button": "Choose"
+    },
+    "perMonth": "per month",
+    "perYear": "per year",
+    "oneTimeLabel": "one-time",
+    "select": "Select"
+  },
+  "register": {
+    "title": "Store or Pharmacy Registration",
+    "subtitle": "Fill out the form to create an account",
+    "personalInfo": "Personal Information",
+    "shopInfo": "Store/Pharmacy Information",
+    "name": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "phone": "Phone",
+    "shopName": "Store/Pharmacy Name",
+    "inn": "Tax ID",
+    "description": "Description",
+    "address": "Address",
+    "city": "City",
+    "selectCity": "Select city",
+    "submit": "Register",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login"
+  },
+  "businessType": {
+    "title": "Select Business Type",
+    "subtitle": "Select your business type to configure the system",
+    "pharmacy": "Pharmacy",
+    "pharmacyDesc": "For pharmacies and pharmaceutical outlets",
+    "clothing": "Clothing Store",
+    "clothingDesc": "For clothing and accessories stores"
+  },
+  "subscription": {
+    "title": "Choose Subscription Plan",
+    "subtitle": "Select the right plan for your business",
+    "processing": "Processing...",
+    "error": "Error loading plans"
+  },
+  "payment": {
+    "title": "Subscription Payment",
+    "subtitle": "Complete payment to activate license",
+    "plan": "Plan",
+    "amount": "Amount",
+    "provider": "Payment Provider",
+    "transactionId": "Transaction ID",
+    "pay": "Pay",
+    "processing": "Processing payment...",
+    "success": "Payment successful!",
+    "note": "In demo version payment is processed automatically"
+  },
+  "success": {
+    "title": "Registration Successful!",
+    "subtitle": "Your license has been activated",
+    "shopId": "Store ID",
+    "licenseKey": "License Key",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "expiresAt": "Expires",
+    "instructions": "Save this data in a safe place. You will need it to activate the application.",
+    "download": "Download Data",
+    "continue": "Go to Home"
+  },
+  "login": {
+    "title": "Login to Account",
+    "subtitle": "Sign in to your account to manage your store",
+    "phone": "Phone",
+    "phonePlaceholder": "+79991234567",
+    "password": "Password",
+    "submit": "Login",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    "forgotPassword": "Forgot password?",
+    "processing": "Logging in..."
+  },
+  "account": {
+    "title": "My Account",
+    "subtitle": "Manage your data and licenses",
+    "personalInfo": "Personal Information",
+    "shopInfo": "Store Information",
+    "licenses": "My Licenses",
+    "noLicenses": "You don't have any licenses yet",
+    "licenseKey": "License Key",
+    "subscriptionType": "Subscription Type",
+    "status": "Status",
+    "expiresAt": "Expires",
+    "daysRemaining": "Days Remaining",
+    "active": "Active",
+    "expired": "Expired",
+    "cancelled": "Cancelled",
+    "pending": "Pending",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "lifetime": "Lifetime",
+    "loading": "Loading data...",
+    "error": "Error loading data",
+    "logout": "Logout",
+    "renew": "Renew Subscription"
+  },
+  "shopSelection": {
+    "title": "Select Shop",
+    "subtitle": "Choose a shop for subscription or create a new one",
+    "selectShop": "Select Shop",
+    "continue": "Continue",
+    "createNew": "Create New Shop",
+    "createFirstShop": "Create First Shop",
+    "noShops": "You don't have any shops yet",
+    "loading": "Loading shops...",
+    "error": "Error loading shops"
+  },
+  "downloads": {
+    "title": "Download Programs",
+    "subtitle": "Choose and download the version you need for your business",
+    "download": "Download",
+    "downloading": "Downloading",
+    "comingSoon": "Coming Soon",
+    "pharmacy": {
+      "title": "For Pharmacies",
+      "description": "Specialized versions for pharmacies and pharmaceutical outlets",
+      "windows": {
+        "title": "Pharmacy for Windows",
+        "description": "Full-featured program for pharmacy management on Windows"
+      },
+      "android": {
+        "title": "Pharmacy for Android",
+        "description": "Mobile app for pharmacy work on Android devices"
+      }
+    },
+    "shop": {
+      "title": "For Stores",
+      "description": "Program versions for regular stores and retail outlets",
+      "windows": {
+        "title": "Store for Windows",
+        "description": "Program for store management on Windows"
+      },
+      "android": {
+        "title": "Store for Android",
+        "description": "Mobile app for store work on Android"
+      }
+    },
+    "server": {
+      "title": "Server Version (Main-Server Cash Register 1)",
+      "description": "Server version for centralized management of multiple cash registers",
+      "platform": "Windows Server",
+      "windows": {
+        "title": "Windows Server",
+        "description": "Main server for managing cash register network. Installed on main computer"
+      }
+    },
+    "standalone": {
+      "title": "Universal Programs",
+      "description": "Basic program versions for work without business type binding",
+      "windows": {
+        "title": "Program for Windows",
+        "description": "Universal program for Windows"
+      },
+      "android": {
+        "title": "Program for Android",
+        "description": "Universal mobile app for Android"
+      }
+    }
+  },
+  "docs": {
+    "title": "Documentation",
+    "subtitle": "Step-by-step instructions for installation, configuration and usage",
+    "installation": {
+      "title": "Installation",
+      "windows": {
+        "title": "Windows Installation",
+        "step1": {
+          "title": "Download the installer",
+          "description": "Go to the downloads page and download the Windows version. The file will have .exe extension"
+        },
+        "step2": {
+          "title": "Run the installer",
+          "description": "Double-click the downloaded file. If a security warning appears, click 'Allow' or 'Run'"
+        },
+        "step3": {
+          "title": "Follow the installation wizard",
+          "description": "Choose installation folder (default is Program Files), accept the license terms and click 'Install'"
+        },
+        "step4": {
+          "title": "Wait for installation to complete",
+          "description": "The installation process will take a few minutes. Do not close the installer window until completion"
+        },
+        "step5": {
+          "title": "Launch the program",
+          "description": "After installation, the program will be available in the Start menu. You can also launch it from the desktop if a shortcut was created"
+        }
+      },
+      "android": {
+        "title": "Android Installation",
+        "step1": {
+          "title": "Download the APK file",
+          "description": "Go to the downloads page and download the Android version. The file will have .apk extension"
+        },
+        "step2": {
+          "title": "Allow installation from unknown sources",
+          "description": "In Android settings, go to 'Security' and enable 'Install from unknown sources' for your browser"
+        },
+        "step3": {
+          "title": "Install the application",
+          "description": "Open the downloaded APK file and tap 'Install'. Wait for installation to complete"
+        },
+        "step4": {
+          "title": "Launch the application",
+          "description": "After installation, find the app icon on the home screen or in the app drawer and launch it"
+        }
+      },
+      "server": {
+        "title": "Server Installation",
+        "step1": {
+          "title": "Prepare the server",
+          "description": "Make sure Windows Server or Windows 10/11 is installed. Requires at least 4GB RAM and 10GB free space"
+        },
+        "step2": {
+          "title": "Download the server version",
+          "description": "Download the server version from the main downloads page"
+        },
+        "step3": {
+          "title": "Install the program",
+          "description": "Run the installer as administrator. Choose installation folder and follow the instructions"
+        },
+        "step4": {
+          "title": "Configure network access",
+          "description": "Configure firewall and network settings for cash register access to the server. Default port: 8080"
+        }
+      }
+    },
+    "configuration": {
+      "title": "Configuration",
+      "firstLaunch": {
+        "title": "First Launch",
+        "step1": {
+          "title": "Enter license key",
+          "description": "On first launch, the program will request a license key. Enter the key you received after registration and payment"
+        },
+        "step2": {
+          "title": "Create administrator",
+          "description": "Create an administrator account with username and password. This account will have full access to settings"
+        },
+        "step3": {
+          "title": "Select business type",
+          "description": "Specify your business type: store or pharmacy. This will determine available features and modules"
+        }
+      },
+      "shopSettings": {
+        "title": "Shop Settings",
+        "step1": {
+          "title": "Fill in shop information",
+          "description": "In 'Settings' → 'Shop' section, enter name, tax ID, address and other information about your shop"
+        },
+        "step2": {
+          "title": "Configure currency and taxes",
+          "description": "Select working currency (som, dollar, etc.) and configure tax rates if necessary"
+        },
+        "step3": {
+          "title": "Configure receipt printing",
+          "description": "Connect receipt printer and configure print format. You can use either physical printer or virtual one for PDF saving"
+        }
+      },
+      "cashRegisters": {
+        "title": "Cash Register Setup",
+        "step1": {
+          "title": "Add cash register",
+          "description": "In 'Settings' → 'Cash Registers' section, click 'Add Cash Register'. Enter name and select register type"
+        },
+        "step2": {
+          "title": "Connect equipment",
+          "description": "Connect barcode scanner, scales (if needed) and other equipment. The program will automatically detect connected devices"
+        },
+        "step3": {
+          "title": "Configure access rights",
+          "description": "For each cash register, configure user access rights. You can restrict access to certain functions"
+        }
+      }
+    },
+    "usage": {
+      "title": "Usage",
+      "sales": {
+        "title": "Working with Sales",
+        "step1": {
+          "title": "Open sales section",
+          "description": "In the main menu, select 'Sales' or click the corresponding button on the home screen"
+        },
+        "step2": {
+          "title": "Add items to receipt",
+          "description": "Use barcode scanner or search by name to add items. You can manually specify quantity"
+        },
+        "step3": {
+          "title": "Apply discounts",
+          "description": "If necessary, apply discounts to items or entire receipt. You can use percentage or fixed discounts"
+        },
+        "step4": {
+          "title": "Complete the sale",
+          "description": "Select payment method (cash, card, transfer) and complete the sale. Receipt will be automatically printed and saved"
+        }
+      },
+      "warehouse": {
+        "title": "Warehouse Management",
+        "step1": {
+          "title": "Add items",
+          "description": "In 'Warehouse' → 'Items' section, add new items. Specify name, SKU, price, stock and other information"
+        },
+        "step2": {
+          "title": "Conduct inventory",
+          "description": "Use 'Inventory' function to reconcile actual stock with system data"
+        },
+        "step3": {
+          "title": "Process deliveries and write-offs",
+          "description": "In 'Warehouse' section, process item receipts from suppliers or write-offs when necessary"
+        }
+      },
+      "reports": {
+        "title": "Reports and Analytics",
+        "step1": {
+          "title": "Open reports section",
+          "description": "In the main menu, select 'Reports' to view various reports on sales, stock and profit"
+        },
+        "step2": {
+          "title": "Select report type",
+          "description": "Choose the needed report: sales for period, item stock, profit, popular items, etc."
+        },
+        "step3": {
+          "title": "Configure parameters and export",
+          "description": "Specify period and other report parameters. Report can be viewed on screen, printed or exported to Excel/PDF"
+        }
+      }
+    },
+    "troubleshooting": {
+      "title": "Troubleshooting",
+      "commonIssues": {
+        "title": "Common Issues",
+        "q1": {
+          "question": "Program won't start",
+          "answer": "Make sure you have the latest .NET Framework installed. Restart your computer and try running the program as administrator"
+        },
+        "q2": {
+          "question": "Barcode scanner not working",
+          "answer": "Check scanner connection to computer. Make sure drivers are installed. In program settings, verify that scanner is selected as input device"
+        },
+        "q3": {
+          "question": "Receipts not printing",
+          "answer": "Check printer connection and paper availability. In program settings, make sure correct printer is selected. Try printing a test page"
+        }
+      },
+      "support": {
+        "title": "Technical Support",
+        "description": "If you couldn't solve the problem yourself, contact our support service:"
+      }
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "required": "Required field",
+    "optional": "optional",
+    "invalidEmail": "Invalid email",
+    "invalidPhone": "Invalid phone number",
+    "minLength": "Minimum {{count}} characters",
+    "back": "Back",
+    "next": "Next",
+    "cancel": "Cancel",
+    "retry": "Retry"
+  }
+}
+

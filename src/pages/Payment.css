@@ -1,0 +1,232 @@
+.payment-page {
+  min-height: 100vh;
+  padding: var(--spacing-xl) var(--spacing-md);
+  background: var(--gradient-bg);
+  position: relative;
+}
+
+.payment-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.payment-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.payment-title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--spacing-sm);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.payment-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--muted);
+}
+
+.loading-container,
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: var(--spacing-md);
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+.plan-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.plan-card:hover {
+  border-color: var(--accent);
+  background: var(--card-bg-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.plan-card.selected {
+  border-color: var(--accent);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.plan-card h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: var(--spacing-md);
+}
+
+.plan-card .plan-price {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: var(--spacing-md);
+}
+
+.plan-card p {
+  color: var(--muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+}
+
+.payment-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--spacing-2xl);
+}
+
+.payment-summary {
+  height: fit-content;
+  position: sticky;
+  top: var(--spacing-xl);
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  border: 1px solid var(--border);
+}
+
+.summary-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text);
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-label {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.summary-value {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.summary-amount {
+  font-size: var(--font-size-xl);
+  color: var(--accent);
+}
+
+.summary-description {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 2px solid var(--border);
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  border: 1px solid var(--border);
+}
+
+.form-hint {
+  display: block;
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--muted);
+}
+
+.payment-note {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: var(--spacing-md);
+  color: var(--info-light);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+/* Стили для Stripe PaymentElement */
+.payment-form .StripeElement {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--spacing-md);
+  color: var(--text);
+}
+
+.payment-form .StripeElement--focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.payment-form .StripeElement--invalid {
+  border-color: var(--danger);
+}
+
+.payment-form .StripeElement--complete {
+  border-color: var(--success);
+}
+
+.payment-note strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 968px) {
+  .payment-content {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-summary {
+    position: static;
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .payment-page {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .payment-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .payment-container {
+    padding: 0;
+  }
+}
+
