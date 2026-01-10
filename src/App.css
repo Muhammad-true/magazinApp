@@ -1,6 +1,49 @@
 .app {
   min-height: 100vh;
+  min-height: -webkit-fill-available; /* iOS Safari */
   width: 100%;
+  /* PWA поддержка */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  box-sizing: border-box;
+}
+
+/* Поддержка safe area для iOS */
+@supports (padding: max(0px)) {
+  .app {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+    padding-top: max(0px, env(safe-area-inset-top));
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Улучшения для PWA standalone режима */
+@media (display-mode: standalone) {
+  .app {
+    /* Убираем лишние отступы в standalone */
+    padding-top: env(safe-area-inset-top);
+    /* Полноэкранный режим */
+    height: 100vh;
+    height: -webkit-fill-available;
+    overflow: hidden;
+  }
+  
+  /* Улучшенная прокрутка внутри приложения */
+  .app > * {
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Дополнительные улучшения для мобильных */
+@media (max-width: 768px) {
+  .app {
+    /* Предотвращение горизонтальной прокрутки */
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
 }
 
 /* Button Styles */

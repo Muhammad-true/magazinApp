@@ -15,9 +15,9 @@ export default defineConfig({
         theme_color: '#3b82f6',
         background_color: '#0a0a0f',
         display: 'standalone',
-        orientation: 'portrait',
+        orientation: 'portrait-primary',
         scope: '/',
-        start_url: '/',
+        start_url: '/?utm_source=pwa',
         icons: [
           {
             src: 'icon-192.png',
@@ -30,6 +30,24 @@ export default defineConfig({
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
+          }
+        ],
+        screenshots: [],
+        categories: ['business', 'productivity', 'utilities'],
+        shortcuts: [
+          {
+            name: 'Главная',
+            short_name: 'Главная',
+            description: 'Главная страница',
+            url: '/',
+            icons: [{ src: 'icon-192.png', sizes: '192x192' }]
+          },
+          {
+            name: 'Аккаунт',
+            short_name: 'Аккаунт',
+            description: 'Мой аккаунт',
+            url: '/account',
+            icons: [{ src: 'icon-192.png', sizes: '192x192' }]
           }
         ]
       },
