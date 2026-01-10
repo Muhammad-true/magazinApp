@@ -402,7 +402,8 @@
 /* Desktop styles */
 @media (min-width: 769px) {
   .hamburger,
-  .mobile-menu-overlay {
+  .mobile-menu-overlay,
+  .mobile-nav-btn {
     display: none;
   }
 }

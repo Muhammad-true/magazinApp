@@ -29,6 +29,8 @@ const Navbar = () => {
     setIsMenuOpen(false)
   }
 
+  const mobile = isMobile()
+
   const handleLinkClick = () => {
     closeMenu()
   }
@@ -46,8 +48,6 @@ const Navbar = () => {
       }, 300)
     }
   }
-
-  const mobile = isMobile()
 
   return (
     <>
