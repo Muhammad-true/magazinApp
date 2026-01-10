@@ -1,0 +1,83 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+  z-index: 1000;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: var(--muted);
+  transition: all 0.3s ease;
+  flex: 1;
+  min-height: 60px;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav-icon {
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.bottom-nav-label {
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.bottom-nav-item.active {
+  color: var(--accent);
+}
+
+.bottom-nav-item.active .bottom-nav-icon {
+  transform: scale(1.2);
+}
+
+.bottom-nav-item:active {
+  transform: scale(0.95);
+}
+
+/* Индикатор активной вкладки */
+.bottom-nav-item.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: var(--gradient-primary);
+  border-radius: 0 0 4px 4px;
+}
+
+/* Скрываем на десктопе */
+@media (min-width: 769px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+
+/* PWA standalone режим */
+@media (display-mode: standalone) {
+  .bottom-nav {
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}

@@ -1,10 +1,19 @@
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { apiService } from '../services/api'
+import { isMobile } from '../utils/pwa'
 import './Navbar.css'
 
 const Navbar = () => {
   const { t, i18n } = useTranslation()
   const location = useLocation()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  useEffect(() => {
+    setIsAuthenticated(apiService.isAuthenticated())
+  }, [location])
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng)
@@ -12,68 +21,242 @@ const Navbar = () => {
 
   const isActive = (path: string) => location.pathname === path
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+  }
+
+  const handleLinkClick = () => {
+    closeMenu()
+  }
+
+  const mobile = isMobile()
+
   return (
-    <nav className="navbar">
-      <div className="container">
-        <div className="navbar-content">
-          <Link to="/" className="navbar-brand">
-            <span className="brand-icon">🏪</span>
-            <span className="brand-text">MagazinApp</span>
-            <span className="brand-tagline">Магазины & Аптеки</span>
-          </Link>
-
-          <div className="navbar-menu">
-            <Link 
-              to="/" 
-              className={`navbar-link ${isActive('/') ? 'active' : ''}`}
-            >
-              {t('nav.home')}
+    <>
+      <nav className={`navbar ${mobile ? 'navbar-mobile' : ''}`}>
+        <div className="container">
+          <div className="navbar-content">
+            <Link to="/" className="navbar-brand" onClick={handleLinkClick}>
+              <span className="brand-icon">🏪</span>
+              <span className="brand-text">MagazinApp</span>
             </Link>
-            <a 
-              href="#features" 
-              className="navbar-link"
-            >
-              {t('nav.features')}
-            </a>
-            <a 
-              href="#pricing" 
-              className="navbar-link"
-            >
-              {t('nav.pricing')}
-            </a>
-            <Link 
-              to="/register" 
-              className={`navbar-link ${isActive('/register') ? 'active' : ''}`}
-            >
-              {t('nav.register')}
-            </Link>
-          </div>
 
-          <div className="navbar-actions">
-            <div className="language-selector">
-              <button
-                className={`lang-btn ${i18n.language === 'ru' ? 'active' : ''}`}
-                onClick={() => changeLanguage('ru')}
-              >
-                RU
-              </button>
-              <button
-                className={`lang-btn ${i18n.language === 'en' ? 'active' : ''}`}
-                onClick={() => changeLanguage('en')}
-              >
-                EN
-              </button>
-              <button
-                className={`lang-btn ${i18n.language === 'uz' ? 'active' : ''}`}
-                onClick={() => changeLanguage('uz')}
-              >
-                UZ
-              </button>
+            {!mobile && (
+              <div className="navbar-menu">
+                <Link 
+                  to="/" 
+                  className={`navbar-link ${isActive('/') ? 'active' : ''}`}
+                >
+                  {t('nav.home')}
+                </Link>
+                <a 
+                  href="#features" 
+                  className="navbar-link"
+                >
+                  {t('nav.features')}
+                </a>
+                <a 
+                  href="#pricing" 
+                  className="navbar-link"
+                >
+                  {t('nav.pricing')}
+                </a>
+                <Link 
+                  to="/downloads" 
+                  className={`navbar-link ${isActive('/downloads') ? 'active' : ''}`}
+                >
+                  {t('nav.downloads')}
+                </Link>
+                <Link 
+                  to="/documentation?type=clothing" 
+                  className={`navbar-link ${isActive('/documentation') ? 'active' : ''}`}
+                >
+                  {t('nav.documentation')}
+                </Link>
+                {isAuthenticated ? (
+                  <Link 
+                    to="/account" 
+                    className={`navbar-link ${isActive('/account') ? 'active' : ''}`}
+                  >
+                    {t('nav.account')}
+                  </Link>
+                ) : (
+                  <>
+                    <Link 
+                      to="/login" 
+                      className={`navbar-link ${isActive('/login') ? 'active' : ''}`}
+                    >
+                      {t('nav.login')}
+                    </Link>
+                    <Link 
+                      to="/register" 
+                      className={`navbar-link ${isActive('/register') ? 'active' : ''}`}
+                    >
+                      {t('nav.register')}
+                    </Link>
+                  </>
+                )}
+              </div>
+            )}
+
+            <div className="navbar-actions">
+              {!mobile && (
+                <div className="language-selector">
+                  <button
+                    className={`lang-btn ${i18n.language === 'ru' ? 'active' : ''}`}
+                    onClick={() => changeLanguage('ru')}
+                  >
+                    RU
+                  </button>
+                  <button
+                    className={`lang-btn ${i18n.language === 'en' ? 'active' : ''}`}
+                    onClick={() => changeLanguage('en')}
+                  >
+                    EN
+                  </button>
+                  <button
+                    className={`lang-btn ${i18n.language === 'uz' ? 'active' : ''}`}
+                    onClick={() => changeLanguage('uz')}
+                  >
+                    UZ
+                  </button>
+                </div>
+              )}
+              
+              {mobile && (
+                <button 
+                  className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+                  onClick={toggleMenu}
+                  aria-label="Menu"
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              )}
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {mobile && (
+        <div 
+          className={`mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`}
+          onClick={closeMenu}
+        >
+          <div 
+            className="mobile-menu"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mobile-menu-header">
+              <span className="brand-icon">🏪</span>
+              <span className="brand-text">MagazinApp</span>
+              <button className="close-btn" onClick={closeMenu}>✕</button>
+            </div>
+            
+            <div className="mobile-menu-content">
+              <Link 
+                to="/" 
+                className={`mobile-menu-link ${isActive('/') ? 'active' : ''}`}
+                onClick={handleLinkClick}
+              >
+                <span className="menu-icon">🏠</span>
+                {t('nav.home')}
+              </Link>
+              <a 
+                href="#features" 
+                className="mobile-menu-link"
+                onClick={handleLinkClick}
+              >
+                <span className="menu-icon">⭐</span>
+                {t('nav.features')}
+              </a>
+              <a 
+                href="#pricing" 
+                className="mobile-menu-link"
+                onClick={handleLinkClick}
+              >
+                <span className="menu-icon">💰</span>
+                {t('nav.pricing')}
+              </a>
+              <Link 
+                to="/downloads" 
+                className={`mobile-menu-link ${isActive('/downloads') ? 'active' : ''}`}
+                onClick={handleLinkClick}
+              >
+                <span className="menu-icon">📥</span>
+                {t('nav.downloads')}
+              </Link>
+              <Link 
+                to="/documentation?type=clothing" 
+                className={`mobile-menu-link ${isActive('/documentation') ? 'active' : ''}`}
+                onClick={handleLinkClick}
+              >
+                <span className="menu-icon">📖</span>
+                {t('nav.documentation')}
+              </Link>
+              {isAuthenticated ? (
+                <Link 
+                  to="/account" 
+                  className={`mobile-menu-link ${isActive('/account') ? 'active' : ''}`}
+                  onClick={handleLinkClick}
+                >
+                  <span className="menu-icon">👤</span>
+                  {t('nav.account')}
+                </Link>
+              ) : (
+                <>
+                  <Link 
+                    to="/login" 
+                    className={`mobile-menu-link ${isActive('/login') ? 'active' : ''}`}
+                    onClick={handleLinkClick}
+                  >
+                    <span className="menu-icon">🔐</span>
+                    {t('nav.login')}
+                  </Link>
+                  <Link 
+                    to="/register" 
+                    className={`mobile-menu-link ${isActive('/register') ? 'active' : ''}`}
+                    onClick={handleLinkClick}
+                  >
+                    <span className="menu-icon">✍️</span>
+                    {t('nav.register')}
+                  </Link>
+                </>
+              )}
+            </div>
+
+            <div className="mobile-menu-footer">
+              <div className="language-selector-mobile">
+                <button
+                  className={`lang-btn-mobile ${i18n.language === 'ru' ? 'active' : ''}`}
+                  onClick={() => changeLanguage('ru')}
+                >
+                  RU
+                </button>
+                <button
+                  className={`lang-btn-mobile ${i18n.language === 'en' ? 'active' : ''}`}
+                  onClick={() => changeLanguage('en')}
+                >
+                  EN
+                </button>
+                <button
+                  className={`lang-btn-mobile ${i18n.language === 'uz' ? 'active' : ''}`}
+                  onClick={() => changeLanguage('uz')}
+                >
+                  UZ
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

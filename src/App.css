@@ -26,11 +26,13 @@
     height: 100vh;
     height: -webkit-fill-available;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
   
   /* Улучшенная прокрутка внутри приложения */
-  .app > * {
-    height: 100%;
+  .app > *:not(.bottom-nav):not(.install-prompt) {
+    flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -43,6 +45,15 @@
     overflow-x: hidden;
     width: 100%;
     position: relative;
+    /* Отступ снизу для bottom navigation */
+    padding-bottom: 70px;
+  }
+  
+  /* PWA standalone - убираем отступ снизу, так как bottom nav уже учитывает safe area */
+  @media (display-mode: standalone) {
+    .app {
+      padding-bottom: 0;
+    }
   }
 }
 
