@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание PWA иконок из icon.png</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .container {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        canvas {
+            border: 2px solid #444;
+            margin: 10px;
+            background: #fff;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        .preview {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .info {
+            background: #333;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 Создание PWA иконок</h1>
+        <div class="info">
+            <p>Этот инструмент создаст иконки 192x192 и 512x512 из вашего файла icon.png</p>
+            <p><strong>Инструкция:</strong></p>
+            <ol>
+                <li>Загрузите ваш файл icon.png</li>
+                <li>Проверьте превью</li>
+                <li>Нажмите "Скачать иконки"</li>
+                <li>Сохраните файлы в папку public/</li>
+            </ol>
+        </div>
+        
+        <input type="file" id="fileInput" accept="image/*" style="margin: 20px 0;">
+        
+        <div class="preview">
+            <div>
+                <h3>192x192</h3>
+                <canvas id="canvas192" width="192" height="192"></canvas>
+            </div>
+            <div>
+                <h3>512x512</h3>
+                <canvas id="canvas512" width="512" height="512"></canvas>
+            </div>
+        </div>
+        
+        <button onclick="downloadIcons()">📥 Скачать иконки</button>
+        <button onclick="loadDefaultIcon()">🔄 Загрузить icon.png</button>
+    </div>
+
+    <script>
+        const canvas192 = document.getElementById('canvas192');
+        const canvas512 = document.getElementById('canvas512');
+        const fileInput = document.getElementById('fileInput');
+        let currentImage = null;
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        currentImage = img;
+                        createIcons(img);
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function loadDefaultIcon() {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = () => {
+                currentImage = img;
+                createIcons(img);
+            };
+            img.onerror = () => {
+                alert('Не удалось загрузить icon.png. Убедитесь, что файл находится в папке public/');
+            };
+            img.src = './icon.png';
+        }
+
+        function createIcons(img) {
+            // Создаем иконку 192x192
+            const ctx192 = canvas192.getContext('2d');
+            ctx192.clearRect(0, 0, 192, 192);
+            ctx192.drawImage(img, 0, 0, 192, 192);
+
+            // Создаем иконку 512x512
+            const ctx512 = canvas512.getContext('2d');
+            ctx512.clearRect(0, 0, 512, 512);
+            ctx512.drawImage(img, 0, 0, 512, 512);
+        }
+
+        function downloadIcons() {
+            if (!currentImage) {
+                alert('Сначала загрузите изображение!');
+                return;
+            }
+
+            // Скачиваем 192x192
+            canvas192.toBlob((blob) => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'icon-192.png';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 'image/png');
+
+            // Скачиваем 512x512 через небольшую задержку
+            setTimeout(() => {
+                canvas512.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'icon-512.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 'image/png');
+            }, 500);
+        }
+
+        // Автоматически загружаем icon.png при открытии страницы
+        window.onload = () => {
+            loadDefaultIcon();
+        };
+    </script>
+</body>
+</html>
