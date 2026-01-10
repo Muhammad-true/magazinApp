@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Account from './pages/Account'
@@ -9,8 +10,15 @@ import Payment from './pages/Payment'
 import Register from './pages/Register'
 import ShopSelection from './pages/ShopSelection'
 import Success from './pages/Success'
+import InstallPrompt from './components/InstallPrompt'
+import { registerInstallPrompt } from './utils/pwa'
 
 function App() {
+  useEffect(() => {
+    // Регистрируем обработчик для показа кнопки установки PWA
+    registerInstallPrompt()
+  }, [])
+
   return (
     <BrowserRouter>
       <div className="app">
@@ -25,6 +33,7 @@ function App() {
           <Route path="/payment" element={<Payment />} />
           <Route path="/success" element={<Success />} />
         </Routes>
+        <InstallPrompt />
       </div>
     </BrowserRouter>
   )

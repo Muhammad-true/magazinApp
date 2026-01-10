@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Создание иконок PWA</title>
+</head>
+<body>
+    <h1>Создание иконок для PWA</h1>
+    <p>Откройте эту страницу в браузере и используйте Canvas для создания иконок</p>
+    
+    <canvas id="icon192" width="192" height="192" style="border: 1px solid #000;"></canvas>
+    <canvas id="icon512" width="512" height="512" style="border: 1px solid #000;"></canvas>
+    
+    <br><br>
+    <button onclick="downloadIcons()">Скачать иконки</button>
+    
+    <script>
+        function createIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            
+            // Фон с градиентом
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#3b82f6');
+            gradient.addColorStop(1, '#2563eb');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Скругленные углы (простое решение)
+            ctx.globalCompositeOperation = 'destination-in';
+            ctx.beginPath();
+            const radius = size * 0.1;
+            ctx.moveTo(radius, 0);
+            ctx.lineTo(size - radius, 0);
+            ctx.quadraticCurveTo(size, 0, size, radius);
+            ctx.lineTo(size, size - radius);
+            ctx.quadraticCurveTo(size, size, size - radius, size);
+            ctx.lineTo(radius, size);
+            ctx.quadraticCurveTo(0, size, 0, size - radius);
+            ctx.lineTo(0, radius);
+            ctx.quadraticCurveTo(0, 0, radius, 0);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Сброс композиции
+            ctx.globalCompositeOperation = 'source-over';
+            
+            // Буква M
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size * 0.5}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('M', size / 2, size / 2);
+        }
+        
+        function downloadIcons() {
+            // Создаем иконки
+            const canvas192 = document.getElementById('icon192');
+            const canvas512 = document.getElementById('icon512');
+            
+            createIcon(canvas192, 192);
+            createIcon(canvas512, 512);
+            
+            // Скачиваем
+            canvas192.toBlob((blob) => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'icon-192.png';
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+            
+            setTimeout(() => {
+                canvas512.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'icon-512.png';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                });
+            }, 500);
+        }
+        
+        // Создаем иконки при загрузке
+        window.onload = () => {
+            createIcon(document.getElementById('icon192'), 192);
+            createIcon(document.getElementById('icon512'), 512);
+        };
+    </script>
+</body>
+</html>
