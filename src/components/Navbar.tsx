@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link, useLocation } from 'react-router-dom'
 import { apiService } from '../services/api'
 import { isMobile } from '../utils/pwa'
 import './Navbar.css'
@@ -31,6 +31,20 @@ const Navbar = () => {
 
   const handleLinkClick = () => {
     closeMenu()
+  }
+
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+    if (mobile) {
+      e.preventDefault()
+      closeMenu()
+      // Небольшая задержка для закрытия меню перед скроллом
+      setTimeout(() => {
+        const element = document.querySelector(hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 300)
+    }
   }
 
   const mobile = isMobile()
@@ -128,15 +142,31 @@ const Navbar = () => {
               )}
               
               {mobile && (
-                <button 
-                  className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-                  onClick={toggleMenu}
-                  aria-label="Menu"
-                >
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </button>
+                <>
+                  <button 
+                    className="mobile-nav-btn"
+                    onClick={toggleMenu}
+                    title={t('nav.pricing')}
+                  >
+                    💰
+                  </button>
+                  <button 
+                    className="mobile-nav-btn"
+                    onClick={toggleMenu}
+                    title={t('nav.downloads')}
+                  >
+                    📥
+                  </button>
+                  <button 
+                    className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+                    onClick={toggleMenu}
+                    aria-label="Menu"
+                  >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </button>
+                </>
               )}
             </div>
           </div>
@@ -171,7 +201,10 @@ const Navbar = () => {
               <a 
                 href="#features" 
                 className="mobile-menu-link"
-                onClick={handleLinkClick}
+                onClick={(e) => {
+                  handleAnchorClick(e, '#features')
+                  handleLinkClick()
+                }}
               >
                 <span className="menu-icon">⭐</span>
                 {t('nav.features')}
@@ -179,7 +212,10 @@ const Navbar = () => {
               <a 
                 href="#pricing" 
                 className="mobile-menu-link"
-                onClick={handleLinkClick}
+                onClick={(e) => {
+                  handleAnchorClick(e, '#pricing')
+                  handleLinkClick()
+                }}
               >
                 <span className="menu-icon">💰</span>
                 {t('nav.pricing')}
@@ -233,24 +269,39 @@ const Navbar = () => {
 
             <div className="mobile-menu-footer">
               <div className="language-selector-mobile">
-                <button
-                  className={`lang-btn-mobile ${i18n.language === 'ru' ? 'active' : ''}`}
-                  onClick={() => changeLanguage('ru')}
-                >
-                  RU
-                </button>
-                <button
-                  className={`lang-btn-mobile ${i18n.language === 'en' ? 'active' : ''}`}
-                  onClick={() => changeLanguage('en')}
-                >
-                  EN
-                </button>
-                <button
-                  className={`lang-btn-mobile ${i18n.language === 'uz' ? 'active' : ''}`}
-                  onClick={() => changeLanguage('uz')}
-                >
-                  UZ
-                </button>
+                <div className="language-label">{t('common.language')}</div>
+                <div className="language-buttons">
+                  <button
+                    className={`lang-btn-mobile ${i18n.language === 'ru' ? 'active' : ''}`}
+                    onClick={() => {
+                      changeLanguage('ru')
+                      closeMenu()
+                    }}
+                  >
+                    <span className="lang-flag">🇷🇺</span>
+                    <span className="lang-name">Русский</span>
+                  </button>
+                  <button
+                    className={`lang-btn-mobile ${i18n.language === 'en' ? 'active' : ''}`}
+                    onClick={() => {
+                      changeLanguage('en')
+                      closeMenu()
+                    }}
+                  >
+                    <span className="lang-flag">🇬🇧</span>
+                    <span className="lang-name">English</span>
+                  </button>
+                  <button
+                    className={`lang-btn-mobile ${i18n.language === 'uz' ? 'active' : ''}`}
+                    onClick={() => {
+                      changeLanguage('uz')
+                      closeMenu()
+                    }}
+                  >
+                    <span className="lang-flag">🇺🇿</span>
+                    <span className="lang-name">O'zbek</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

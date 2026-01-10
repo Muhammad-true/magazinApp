@@ -1,5 +1,5 @@
-import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { Link, useLocation } from 'react-router-dom'
 import { apiService } from '../services/api'
 import { isMobile } from '../utils/pwa'
 import './BottomNav.css'
