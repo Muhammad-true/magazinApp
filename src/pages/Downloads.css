@@ -29,10 +29,33 @@
 .downloads-section {
   margin-bottom: var(--spacing-2xl);
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.downloads-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  opacity: 0.5;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+  z-index: 0;
+}
+
+.downloads-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 .downloads-section:last-child {
@@ -67,21 +90,46 @@
 }
 
 .download-card {
-  background: var(--bg-secondary);
-  border: 2px solid var(--border);
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
+  border: 2px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   transition: var(--transition);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.download-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+}
+
+.download-card:hover::before {
+  opacity: 1;
 }
 
 .download-card:hover {
-  border-color: var(--accent);
+  border-color: var(--glass-hover);
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
   background: var(--card-bg-hover);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
 }
 
 .download-card-header {

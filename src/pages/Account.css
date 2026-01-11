@@ -69,17 +69,41 @@
 
 .account-section {
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--glass-border);
   transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.account-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+}
+
+.account-section:hover::before {
+  opacity: 1;
 }
 
 .account-section:hover {
   box-shadow: var(--shadow-lg);
-  border-color: var(--border-hover);
+  border-color: var(--glass-hover);
+  background: var(--card-bg-hover);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
 }
 
 .section-title {
@@ -123,16 +147,41 @@
 
 .license-card {
   background: var(--card-bg);
-  border: 2px solid var(--border);
-  border-radius: var(--radius);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
+  border: 2px solid var(--glass-border);
+  border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   transition: var(--transition);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.license-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+}
+
+.license-card:hover::before {
+  opacity: 1;
 }
 
 .license-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow);
+  border-color: var(--glass-hover);
+  box-shadow: var(--shadow-lg);
   background: var(--card-bg-hover);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
 }
 
 .license-header {

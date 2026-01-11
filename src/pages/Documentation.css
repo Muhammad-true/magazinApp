@@ -95,10 +95,12 @@
   flex-direction: column;
   gap: var(--spacing-sm);
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
   border-radius: var(--radius-lg);
   padding: var(--spacing-md);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft);
 }
 
 .docs-nav-item {
@@ -134,14 +136,35 @@
 
 .docs-main {
   background: var(--card-bg);
-  backdrop-filter: blur(20px);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
   border-radius: var(--radius-lg);
   padding: var(--spacing-2xl);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   min-height: 600px;
   box-shadow: var(--shadow-soft);
   overflow-x: hidden;
   word-wrap: break-word;
+  position: relative;
+}
+
+.docs-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  opacity: 0.5;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+  z-index: 0;
+}
+
+.docs-main > * {
+  position: relative;
+  z-index: 1;
 }
 
 .docs-section {
@@ -199,11 +222,14 @@
   counter-increment: step-counter;
   margin-bottom: var(--spacing-xl);
   padding: var(--spacing-lg);
-  background: var(--bg-secondary);
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   position: relative;
   padding-left: calc(var(--spacing-xl) + var(--spacing-lg));
+  box-shadow: var(--shadow-soft-inset);
 }
 
 .docs-steps li::before {
@@ -244,9 +270,12 @@
 
 .docs-question {
   padding: var(--spacing-lg);
-  background: var(--bg-secondary);
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft);
 }
 
 .docs-question strong {
@@ -273,10 +302,13 @@
 
 .docs-contact li {
   padding: var(--spacing-md);
-  background: var(--bg-secondary);
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   color: var(--text);
+  box-shadow: var(--shadow-soft-inset);
 }
 
 .btn-back {
@@ -508,18 +540,43 @@
 .guide-step {
   display: flex;
   gap: 24px;
-  background: var(--glass);
-  backdrop-filter: blur(14px);
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
   border-radius: var(--radius-lg);
   padding: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.guide-step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+}
+
+.guide-step:hover::before {
+  opacity: 1;
 }
 
 .guide-step:hover {
   transform: translateX(8px);
-  border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-color: var(--glass-hover);
+  box-shadow: var(--shadow-lg);
+  background: var(--card-bg-hover);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
 }
 
 .step-number {

@@ -250,17 +250,36 @@
   display: block;
 }
 
-/* Card Styles - Soft UI */
+/* Card Styles - Glassmorphism */
 .card {
   background: var(--card-bg);
-  backdrop-filter: blur(20px);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   box-shadow: var(--shadow-soft);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   position: relative;
   overflow: hidden;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+}
+
+.card:hover::after {
+  opacity: 1;
 }
 
 .card::before {
@@ -283,23 +302,29 @@
 .card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-6px) scale(1.02);
-  border-color: var(--border-hover);
+  border-color: var(--glass-border);
   background: var(--card-bg-hover);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
 }
 
-/* Soft UI эффект для карточек */
+/* Glassmorphism эффект для карточек */
 .card-soft {
-  background: var(--bg-secondary);
+  background: var(--card-bg);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   box-shadow: var(--shadow-soft);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: none;
+  border: 1px solid var(--glass-border);
 }
 
 .card-soft:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
+  background: var(--card-bg-hover);
+  border-color: var(--glass-hover);
 }
 
 /* Section Styles */

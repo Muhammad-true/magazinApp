@@ -39,12 +39,14 @@
   --gradient-success: linear-gradient(135deg, #2dce89 0%, #5deaa8 100%);
   --gradient-bg: linear-gradient(180deg, #1a1d29 0%, #252936 50%, #2d3142 100%);
   
-  /* Soft UI эффекты - мягкие тени */
-  --glass: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-hover: rgba(255, 255, 255, 0.15);
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --card-bg-hover: rgba(255, 255, 255, 0.1);
+  /* Glassmorphism эффекты - стеклянные карточки */
+  --glass: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-hover: rgba(255, 255, 255, 0.2);
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --card-bg-hover: rgba(255, 255, 255, 0.12);
+  --glass-blur: blur(20px);
+  --glass-blur-strong: blur(30px);
   
   /* Soft UI тени - мягкие и объемные */
   --shadow-soft: 8px 8px 16px rgba(0, 0, 0, 0.4), -8px -8px 16px rgba(255, 255, 255, 0.05);
