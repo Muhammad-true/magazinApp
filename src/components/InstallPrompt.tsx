@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { isMobile, isPWAInstalled, showInstallPrompt } from '../utils/pwa'
+import { PhoneIcon } from './Icons'
 import './InstallPrompt.css'
 
 const InstallPrompt = () => {
@@ -60,7 +61,9 @@ const InstallPrompt = () => {
   return (
     <div className="install-prompt">
       <div className="install-prompt-content">
-        <div className="install-prompt-icon">📱</div>
+        <div className="install-prompt-icon">
+          <PhoneIcon size={48} color="var(--accent)" />
+        </div>
         <div className="install-prompt-text">
           <h3>Установить MagazinApp</h3>
           <p>Добавьте приложение на главный экран для быстрого доступа</p>

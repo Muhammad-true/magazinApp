@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useSearchParams } from 'react-router-dom'
+import { 
+  PillIcon, ConstructionIcon, LightbulbIcon, RocketIcon, MoneyIcon, 
+  PackageIcon, UsersIcon, ChartIcon, SettingsIcon, DownloadIcon, 
+  DesktopIcon, LockIcon, CheckIcon, PlayIcon, SearchIcon, CreditCardIcon, 
+  CopyIcon, EditIcon, CalendarIcon, StarIcon, HomeIcon, UserIcon, PhoneIcon
+} from '../components/Icons'
 import './Documentation.css'
 
 const Documentation = () => {
@@ -19,13 +25,20 @@ const Documentation = () => {
               ← {t('nav.home')}
             </Link>
             <div>
-              <h1 className="docs-title">💊 Обучение для аптек</h1>
+              <h1 className="docs-title">
+                <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '12px' }}>
+                  <PillIcon size={32} />
+                </span>
+                Обучение для аптек
+              </h1>
               <p className="docs-subtitle">Руководство по работе с системой</p>
             </div>
           </div>
           
           <div className="coming-soon-container">
-            <div className="coming-soon-icon">🚧</div>
+            <div className="coming-soon-icon">
+              <ConstructionIcon size={64} color="var(--accent)" />
+            </div>
             <h2 className="coming-soon-title">
               Скоро будет доступно!
             </h2>
@@ -35,7 +48,10 @@ const Documentation = () => {
             </p>
             <div className="coming-soon-note">
               <p>
-                💡 <strong>Следите за обновлениями!</strong> Руководство появится в ближайшее время.
+                <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                  <LightbulbIcon size={20} />
+                </span>
+                <strong>Следите за обновлениями!</strong> Руководство появится в ближайшее время.
               </p>
             </div>
             <Link to="/documentation?type=clothing" className="btn btn-primary coming-soon-link">
@@ -49,12 +65,12 @@ const Documentation = () => {
 
   // Для магазина одежды - полное руководство
   const sections = [
-    { id: 'getting-started', label: 'Начало работы', icon: '🚀' },
-    { id: 'cashier', label: 'Работа с кассой', icon: '💰' },
-    { id: 'products', label: 'Товары и склад', icon: '📦' },
-    { id: 'clients', label: 'Клиенты', icon: '👥' },
-    { id: 'reports', label: 'Отчеты', icon: '📊' },
-    { id: 'admin', label: 'Админ-панель', icon: '⚙️' }
+    { id: 'getting-started', label: 'Начало работы', icon: RocketIcon },
+    { id: 'cashier', label: 'Работа с кассой', icon: MoneyIcon },
+    { id: 'products', label: 'Товары и склад', icon: PackageIcon },
+    { id: 'clients', label: 'Клиенты', icon: UsersIcon },
+    { id: 'reports', label: 'Отчеты', icon: ChartIcon },
+    { id: 'admin', label: 'Админ-панель', icon: SettingsIcon }
   ]
 
   return (
@@ -75,16 +91,21 @@ const Documentation = () => {
           {/* Sidebar Navigation */}
           <aside className="docs-sidebar">
             <nav className="docs-nav">
-              {sections.map((section) => (
-                <button
-                  key={section.id}
-                  onClick={() => setActiveSection(section.id)}
-                  className={`docs-nav-item ${activeSection === section.id ? 'active' : ''}`}
-                >
-                  <span className="docs-nav-icon">{section.icon}</span>
-                  <span>{section.label}</span>
-                </button>
-              ))}
+              {sections.map((section) => {
+                const IconComponent = section.icon
+                return (
+                  <button
+                    key={section.id}
+                    onClick={() => setActiveSection(section.id)}
+                    className={`docs-nav-item ${activeSection === section.id ? 'active' : ''}`}
+                  >
+                    <span className="docs-nav-icon">
+                      <IconComponent size={20} />
+                    </span>
+                    <span>{section.label}</span>
+                  </button>
+                )
+              })}
             </nav>
           </aside>
 
@@ -94,7 +115,9 @@ const Documentation = () => {
             {activeSection === 'getting-started' && (
               <section className="docs-section">
                 <h2 className="docs-section-title">
-                  <span className="section-icon">🚀</span>
+                  <span className="section-icon">
+                    <RocketIcon size={24} />
+                  </span>
                   Начало работы
                 </h2>
                 
@@ -102,11 +125,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">1</div>
                     <div className="step-content">
-                      <h3>📥 Установка программы</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <DownloadIcon size={20} />
+                        </span>
+                        Установка программы
+                      </h3>
                       <p>Скачайте и установите программу на ваш компьютер</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">💻</span>
+                          <span className="detail-icon">
+                            <DesktopIcon size={20} />
+                          </span>
                           <div>
                             <strong>Для Windows:</strong>
                             <p>Запустите установочный файл и следуйте инструкциям</p>
@@ -119,16 +149,23 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">2</div>
                     <div className="step-content">
-                      <h3>🔑 Первый запуск</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <LockIcon size={20} />
+                        </span>
+                        Первый запуск
+                      </h3>
                       <p>При первом запуске программа попросит вас ввести данные</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">🌐</span>
+                          <span className="detail-icon">
+                            <PhoneIcon size={20} />
+                          </span>
                           <div>
                             <strong>Введите адрес сервера:</strong>
                             <p>Например: http://192.168.1.34:8080/api</p>
-                            <p style={{ fontSize: '12px', color: 'var(--muted)', marginTop: '8px' }}>
-                              💡 Адрес можно найти в настройках на главном компьютере
+                            <p style={{ fontSize: '12px', color: 'var(--muted)', marginTop: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                              <LightbulbIcon size={16} /> Адрес можно найти в настройках на главном компьютере
                             </p>
                           </div>
                         </div>
@@ -139,11 +176,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">3</div>
                     <div className="step-content">
-                      <h3>👤 Вход в систему</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <UserIcon size={20} />
+                        </span>
+                        Вход в систему
+                      </h3>
                       <p>Введите ваш логин и пароль</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">🔐</span>
+                          <span className="detail-icon">
+                            <LockIcon size={20} />
+                          </span>
                           <div>
                             <strong>Данные для входа:</strong>
                             <p>Логин и пароль вам предоставит администратор</p>
@@ -156,11 +200,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">4</div>
                     <div className="step-content">
-                      <h3>✅ Готово!</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <CheckIcon size={20} />
+                        </span>
+                        Готово!
+                      </h3>
                       <p>Теперь вы можете начать работу с программой</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">🎉</span>
+                          <span className="detail-icon">
+                            <StarIcon size={20} />
+                          </span>
                           <div>
                             <strong>Что дальше?</strong>
                             <p>Изучите разделы ниже, чтобы узнать, как работать с кассой, товарами и отчетами</p>
@@ -177,7 +228,9 @@ const Documentation = () => {
             {activeSection === 'cashier' && (
               <section className="docs-section">
                 <h2 className="docs-section-title">
-                  <span className="section-icon">💰</span>
+                  <span className="section-icon">
+                    <MoneyIcon size={24} />
+                  </span>
                   Работа с кассой
                 </h2>
 
@@ -185,11 +238,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">1</div>
                     <div className="step-content">
-                      <h3>🔄 Открытие смены</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <PlayIcon size={20} />
+                        </span>
+                        Открытие смены
+                      </h3>
                       <p>Перед началом работы нужно открыть смену</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">▶️</span>
+                          <span className="detail-icon">
+                            <PlayIcon size={20} />
+                          </span>
                           <div>
                             <strong>Как открыть:</strong>
                             <ol style={{ marginTop: '8px', paddingLeft: '20px' }}>
@@ -206,11 +266,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">2</div>
                     <div className="step-content">
-                      <h3>🔍 Поиск товара</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <SearchIcon size={20} />
+                        </span>
+                        Поиск товара
+                      </h3>
                       <p>Найдите товар для продажи</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">🔎</span>
+                          <span className="detail-icon">
+                            <SearchIcon size={20} />
+                          </span>
                           <div>
                             <strong>Способы поиска:</strong>
                             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
@@ -248,11 +315,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">4</div>
                     <div className="step-content">
-                      <h3>👤 Добавление клиента (необязательно)</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <UserIcon size={20} />
+                        </span>
+                        Добавление клиента (необязательно)
+                      </h3>
                       <p>Если у покупателя есть карта лояльности</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">💳</span>
+                          <span className="detail-icon">
+                            <CreditCardIcon size={20} />
+                          </span>
                           <div>
                             <strong>Как добавить:</strong>
                             <ol style={{ marginTop: '8px', paddingLeft: '20px' }}>
@@ -269,11 +343,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">5</div>
                     <div className="step-content">
-                      <h3>✅ Оформление чека</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <CheckIcon size={20} />
+                        </span>
+                        Оформление чека
+                      </h3>
                       <p>Завершите продажу</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">🧾</span>
+                          <span className="detail-icon">
+                            <CopyIcon size={20} />
+                          </span>
                           <div>
                             <strong>Что сделать:</strong>
                             <ol style={{ marginTop: '8px', paddingLeft: '20px' }}>
@@ -316,7 +397,9 @@ const Documentation = () => {
             {activeSection === 'products' && (
               <section className="docs-section">
                 <h2 className="docs-section-title">
-                  <span className="section-icon">📦</span>
+                  <span className="section-icon">
+                    <PackageIcon size={24} />
+                  </span>
                   Товары и склад
                 </h2>
 
@@ -324,11 +407,13 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">1</div>
                     <div className="step-content">
-                      <h3>➕ Добавление товара</h3>
+                      <h3>Добавление товара</h3>
                       <p>Добавьте новый товар в систему</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">📝</span>
+                          <span className="detail-icon">
+                            <EditIcon size={20} />
+                          </span>
                           <div>
                             <strong>Что нужно указать:</strong>
                             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
@@ -371,11 +456,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">3</div>
                     <div className="step-content">
-                      <h3>📊 Управление складом</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <ChartIcon size={20} />
+                        </span>
+                        Управление складом
+                      </h3>
                       <p>Изменяйте количество товаров на складе</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">📥</span>
+                          <span className="detail-icon">
+                            <DownloadIcon size={20} />
+                          </span>
                           <div>
                             <strong>Что можно сделать:</strong>
                             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
@@ -425,11 +517,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">2</div>
                     <div className="step-content">
-                      <h3>🔍 Поиск клиента</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <SearchIcon size={20} />
+                        </span>
+                        Поиск клиента
+                      </h3>
                       <p>Найдите клиента в базе</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">🔎</span>
+                          <span className="detail-icon">
+                            <SearchIcon size={20} />
+                          </span>
                           <div>
                             <strong>Как искать:</strong>
                             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
@@ -446,11 +545,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">3</div>
                     <div className="step-content">
-                      <h3>🎁 Бонусы клиента</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <StarIcon size={20} />
+                        </span>
+                        Бонусы клиента
+                      </h3>
                       <p>Управляйте бонусами клиента</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">⭐</span>
+                          <span className="detail-icon">
+                            <StarIcon size={20} />
+                          </span>
                           <div>
                             <strong>Что можно сделать:</strong>
                             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
@@ -472,7 +578,9 @@ const Documentation = () => {
             {activeSection === 'reports' && (
               <section className="docs-section">
                 <h2 className="docs-section-title">
-                  <span className="section-icon">📊</span>
+                  <span className="section-icon">
+                    <ChartIcon size={24} />
+                  </span>
                   Отчеты и статистика
                 </h2>
 
@@ -480,11 +588,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">1</div>
                     <div className="step-content">
-                      <h3>📈 Просмотр отчетов</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <ChartIcon size={20} />
+                        </span>
+                        Просмотр отчетов
+                      </h3>
                       <p>Посмотрите статистику продаж</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">📅</span>
+                          <span className="detail-icon">
+                            <CalendarIcon size={20} />
+                          </span>
                           <div>
                             <strong>Что можно посмотреть:</strong>
                             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
@@ -504,11 +619,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">2</div>
                     <div className="step-content">
-                      <h3>📅 Выбор периода</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <CalendarIcon size={20} />
+                        </span>
+                        Выбор периода
+                      </h3>
                       <p>Выберите период для анализа</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">🗓️</span>
+                          <span className="detail-icon">
+                            <CalendarIcon size={20} />
+                          </span>
                           <div>
                             <strong>Доступные периоды:</strong>
                             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
@@ -530,7 +652,9 @@ const Documentation = () => {
             {activeSection === 'admin' && (
               <section className="docs-section">
                 <h2 className="docs-section-title">
-                  <span className="section-icon">⚙️</span>
+                  <span className="section-icon">
+                    <SettingsIcon size={24} />
+                  </span>
                   Админ-панель
                 </h2>
 
@@ -538,11 +662,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">1</div>
                     <div className="step-content">
-                      <h3>🏠 Дашборд</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <HomeIcon size={20} />
+                        </span>
+                        Дашборд
+                      </h3>
                       <p>Главная страница с общей статистикой</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">📊</span>
+                          <span className="detail-icon">
+                            <ChartIcon size={20} />
+                          </span>
                           <div>
                             <strong>Что показывает:</strong>
                             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
@@ -583,11 +714,18 @@ const Documentation = () => {
                   <div className="guide-step">
                     <div className="step-number">3</div>
                     <div className="step-content">
-                      <h3>⚙️ Настройки</h3>
+                      <h3>
+                        <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                          <SettingsIcon size={20} />
+                        </span>
+                        Настройки
+                      </h3>
                       <p>Настройте параметры магазина</p>
                       <div className="step-details">
                         <div className="detail-item">
-                          <span className="detail-icon">🔧</span>
+                          <span className="detail-icon">
+                            <SettingsIcon size={20} />
+                          </span>
                           <div>
                             <strong>Что можно настроить:</strong>
                             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>

@@ -1,5 +1,9 @@
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { 
+  PillIcon, StoreIcon, DesktopIcon, PhoneIcon, PackageIcon 
+} from '../components/Icons'
 import './Downloads.css'
 
 interface DownloadItem {
@@ -9,7 +13,7 @@ interface DownloadItem {
   platform: 'windows' | 'android' | 'server'
   version: string
   size: string
-  icon: string
+  icon: React.ComponentType<{ size?: number; color?: string; className?: string }>
   downloadUrl?: string
   comingSoon?: boolean
 }
@@ -26,7 +30,7 @@ const Downloads = () => {
       platform: 'windows',
       version: '1.0.0',
       size: '~150 MB',
-      icon: '💊',
+      icon: PillIcon,
       comingSoon: false
     },
     {
@@ -36,7 +40,7 @@ const Downloads = () => {
       platform: 'android',
       version: '1.0.0',
       size: '~50 MB',
-      icon: '💊',
+      icon: PillIcon,
       comingSoon: false
     },
     // Магазин
@@ -47,7 +51,7 @@ const Downloads = () => {
       platform: 'windows',
       version: '1.0.0',
       size: '~150 MB',
-      icon: '🏪',
+      icon: StoreIcon,
       comingSoon: false
     },
     {
@@ -57,7 +61,7 @@ const Downloads = () => {
       platform: 'android',
       version: '1.0.0',
       size: '~50 MB',
-      icon: '🏪',
+      icon: StoreIcon,
       comingSoon: false
     },
     // Windows сервер (главная-сервер касса 1)
@@ -68,7 +72,7 @@ const Downloads = () => {
       platform: 'server',
       version: '1.0.0',
       size: '~200 MB',
-      icon: '🖥️',
+      icon: DesktopIcon,
       comingSoon: false
     },
     // Просто программа Windows
@@ -79,7 +83,7 @@ const Downloads = () => {
       platform: 'windows',
       version: '1.0.0',
       size: '~120 MB',
-      icon: '💻',
+      icon: DesktopIcon,
       comingSoon: false
     },
     // Просто программа Android
@@ -90,7 +94,7 @@ const Downloads = () => {
       platform: 'android',
       version: '1.0.0',
       size: '~45 MB',
-      icon: '📱',
+      icon: PhoneIcon,
       comingSoon: false
     }
   ]
@@ -115,13 +119,13 @@ const Downloads = () => {
   const getPlatformIcon = (platform: string) => {
     switch (platform) {
       case 'windows':
-        return '🪟'
+        return <DesktopIcon size={16} color="currentColor" />
       case 'android':
-        return '🤖'
+        return <PhoneIcon size={16} color="currentColor" />
       case 'server':
-        return '🖥️'
+        return <DesktopIcon size={16} color="currentColor" />
       default:
-        return '📦'
+        return <PackageIcon size={16} color="currentColor" />
     }
   }
 
@@ -160,7 +164,9 @@ const Downloads = () => {
         {/* Аптека */}
         <div className="downloads-section">
           <h2 className="section-title">
-            <span className="section-icon">💊</span>
+            <span className="section-icon">
+              <PillIcon size={24} />
+            </span>
             {t('downloads.pharmacy.title')}
           </h2>
           <p className="section-description">{t('downloads.pharmacy.description')}</p>
@@ -168,7 +174,9 @@ const Downloads = () => {
             {pharmacyItems.map((item) => (
               <div key={item.id} className="download-card">
                 <div className="download-card-header">
-                  <div className="download-icon">{item.icon}</div>
+                  <div className="download-icon">
+                    {React.createElement(item.icon, { size: 32, color: 'var(--accent)' })}
+                  </div>
                   <div className="download-platform">
                     {getPlatformIcon(item.platform)} {getPlatformName(item.platform)}
                   </div>
@@ -202,7 +210,9 @@ const Downloads = () => {
             {shopItems.map((item) => (
               <div key={item.id} className="download-card">
                 <div className="download-card-header">
-                  <div className="download-icon">{item.icon}</div>
+                  <div className="download-icon">
+                    {React.createElement(item.icon, { size: 32, color: 'var(--accent)' })}
+                  </div>
                   <div className="download-platform">
                     {getPlatformIcon(item.platform)} {getPlatformName(item.platform)}
                   </div>
@@ -228,7 +238,9 @@ const Downloads = () => {
         {/* Windows сервер (главная-сервер касса 1) */}
         <div className="downloads-section">
           <h2 className="section-title">
-            <span className="section-icon">🖥️</span>
+            <span className="section-icon">
+              <DesktopIcon size={24} />
+            </span>
             {t('downloads.server.title')}
           </h2>
           <p className="section-description">{t('downloads.server.description')}</p>
@@ -236,7 +248,9 @@ const Downloads = () => {
             {serverItems.map((item) => (
               <div key={item.id} className="download-card">
                 <div className="download-card-header">
-                  <div className="download-icon">{item.icon}</div>
+                  <div className="download-icon">
+                    {React.createElement(item.icon, { size: 32, color: 'var(--accent)' })}
+                  </div>
                   <div className="download-platform">
                     {getPlatformIcon(item.platform)} {getPlatformName(item.platform)}
                   </div>
@@ -270,7 +284,9 @@ const Downloads = () => {
             {standaloneItems.map((item) => (
               <div key={item.id} className="download-card">
                 <div className="download-card-header">
-                  <div className="download-icon">{item.icon}</div>
+                  <div className="download-icon">
+                    {React.createElement(item.icon, { size: 32, color: 'var(--accent)' })}
+                  </div>
                   <div className="download-platform">
                     {getPlatformIcon(item.platform)} {getPlatformName(item.platform)}
                   </div>

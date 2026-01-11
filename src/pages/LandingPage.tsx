@@ -3,6 +3,11 @@ import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 import { apiService, City, RegisterData, ShopData } from '../services/api'
 import { getCityName } from '../services/cities'
+import { 
+  PillIcon, ShirtIcon, BookIcon, MoneyIcon, PackageIcon, ChartIcon, 
+  TagIcon, UsersIcon, PhoneIcon, LockIcon, 
+  CopyIcon, CheckIcon
+} from '../components/Icons'
 import './LandingPage.css'
 
 const LandingPage = () => {
@@ -510,20 +515,20 @@ const LandingPage = () => {
                   color: 'var(--muted)',
                   fontSize: '14px'
                 }}>
-                  <li style={{ marginBottom: '10px', paddingLeft: '24px', position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0 }}>✓</span>
+                  <li style={{ marginBottom: '10px', paddingLeft: '24px', position: 'relative', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <CheckIcon size={16} color="var(--accent)" />
                     Справочник лекарственных средств
                   </li>
-                  <li style={{ marginBottom: '10px', paddingLeft: '24px', position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0 }}>✓</span>
+                  <li style={{ marginBottom: '10px', paddingLeft: '24px', position: 'relative', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <CheckIcon size={16} color="var(--accent)" />
                     Учет рецептов и контроль серий
                   </li>
-                  <li style={{ marginBottom: '10px', paddingLeft: '24px', position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0 }}>✓</span>
+                  <li style={{ marginBottom: '10px', paddingLeft: '24px', position: 'relative', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <CheckIcon size={16} color="var(--accent)" />
                     Контроль сроков годности
                   </li>
-                  <li style={{ marginBottom: '10px', paddingLeft: '24px', position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0 }}>✓</span>
+                  <li style={{ marginBottom: '10px', paddingLeft: '24px', position: 'relative', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <CheckIcon size={16} color="var(--accent)" />
                     Маркировка и дозировки
                   </li>
                 </ul>
@@ -558,7 +563,10 @@ const LandingPage = () => {
                       display: 'block'
                     }}
                   >
-                    📖 Обучение для аптек
+                    <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                      <BookIcon size={20} />
+                    </span>
+                    Обучение для аптек
                   </Link>
                 </div>
               </div>
@@ -589,8 +597,13 @@ const LandingPage = () => {
                 <div style={{ 
                   fontSize: '5rem', 
                   marginBottom: '24px',
-                  textAlign: 'center'
-                }}>👕</div>
+                  textAlign: 'center',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}>
+                  <ShirtIcon size={80} color="var(--accent)" />
+                </div>
                 <h2 style={{ 
                   fontSize: '32px', 
                   fontWeight: 700, 
@@ -664,7 +677,10 @@ const LandingPage = () => {
                       display: 'block'
                     }}
                   >
-                    📖 Обучение для магазинов
+                    <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                      <BookIcon size={20} />
+                    </span>
+                    Обучение для магазинов
                   </Link>
                 </div>
               </div>
@@ -695,7 +711,9 @@ const LandingPage = () => {
           </p>
           <div className="features-grid">
             <div className="feature-item">
-              <div className="feature-icon">💰</div>
+              <div className="feature-icon">
+                <MoneyIcon size={32} color="var(--accent)" />
+              </div>
               <h3>{t('features.sales.title')}</h3>
               <p>{t('features.sales.desc')}</p>
               <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
@@ -707,7 +725,9 @@ const LandingPage = () => {
               </ul>
             </div>
             <div className="feature-item">
-              <div className="feature-icon">📦</div>
+              <div className="feature-icon">
+                <PackageIcon size={32} color="var(--accent)" />
+              </div>
               <h3>{t('features.warehouse.title')}</h3>
               <p>{t('features.warehouse.desc')}</p>
               <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
@@ -719,7 +739,9 @@ const LandingPage = () => {
               </ul>
             </div>
             <div className="feature-item">
-              <div className="feature-icon">💊</div>
+              <div className="feature-icon">
+                <PillIcon size={32} color="var(--accent)" />
+              </div>
               <h3>{t('features.pharmacy.title')}</h3>
               <p>{t('features.pharmacy.desc')}</p>
               <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
@@ -731,7 +753,9 @@ const LandingPage = () => {
               </ul>
             </div>
             <div className="feature-item">
-              <div className="feature-icon">📊</div>
+              <div className="feature-icon">
+                <ChartIcon size={32} color="var(--accent)" />
+              </div>
               <h3>Отчеты и аналитика</h3>
               <p>Детальная аналитика продаж и движения товаров</p>
               <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
@@ -755,7 +779,9 @@ const LandingPage = () => {
               </ul>
             </div>
             <div className="feature-item">
-              <div className="feature-icon">🏷️</div>
+              <div className="feature-icon">
+                <TagIcon size={32} color="var(--accent)" />
+              </div>
               <h3>Маркировка и печать</h3>
               <p>Профессиональная маркировка товаров</p>
               <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
@@ -767,7 +793,9 @@ const LandingPage = () => {
               </ul>
             </div>
             <div className="feature-item">
-              <div className="feature-icon">👥</div>
+              <div className="feature-icon">
+                <UsersIcon size={32} color="var(--accent)" />
+              </div>
               <h3>Управление персоналом</h3>
               <p>Контроль работы сотрудников</p>
               <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
@@ -791,7 +819,9 @@ const LandingPage = () => {
               </ul>
             </div>
             <div className="feature-item">
-              <div className="feature-icon">📱</div>
+              <div className="feature-icon">
+                <PhoneIcon size={32} color="var(--accent)" />
+              </div>
               <h3>Мобильное приложение</h3>
               <p>Работайте с любого устройства</p>
               <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
@@ -889,7 +919,9 @@ const LandingPage = () => {
             borderRadius: '12px',
             border: '1px solid rgba(59, 130, 246, 0.2)'
           }}>
-            <div style={{ fontSize: '2rem', marginBottom: '20px' }}>🔑</div>
+            <div style={{ fontSize: '2rem', marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
+              <LockIcon size={48} color="var(--accent)" />
+            </div>
             <h3 style={{ color: 'var(--text)', fontSize: '1.5rem', fontWeight: 600, marginBottom: '16px' }}>
               Для получения ключа лицензии напишите нам
             </h3>
@@ -1004,7 +1036,21 @@ const LandingPage = () => {
           <div className="container">
             <div className="form-container">
               <h2 style={{ fontSize: '32px', marginBottom: '12px' }}>
-                {businessType === 'pharmacy' ? '💊 Регистрация для аптеки' : '👕 Регистрация для магазина'}
+                {businessType === 'pharmacy' ? (
+                  <>
+                    <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                      <PillIcon size={20} />
+                    </span>
+                    Регистрация для аптеки
+                  </>
+                ) : (
+                  <>
+                    <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                      <ShirtIcon size={20} />
+                    </span>
+                    Регистрация для магазина
+                  </>
+                )}
               </h2>
               <p style={{ textAlign: 'center', color: 'var(--muted)', marginBottom: '40px', fontSize: '16px' }}>
                 {businessType === 'pharmacy' 
@@ -1024,7 +1070,11 @@ const LandingPage = () => {
                 textAlign: 'center'
               }}>
                 <div style={{ fontSize: '3rem', marginBottom: '12px' }}>
-                  {businessType === 'pharmacy' ? '💊' : '👕'}
+                  {businessType === 'pharmacy' ? (
+                    <PillIcon size={24} color="var(--accent)" />
+                  ) : (
+                    <ShirtIcon size={24} color="var(--accent)" />
+                  )}
                 </div>
                 <h3 style={{ 
                   color: 'var(--text)', 
@@ -1384,7 +1434,7 @@ const LandingPage = () => {
                     }}
                     title={t('success.copy')}
                   >
-                    📋
+                    <CopyIcon size={20} />
                   </button>
                 </div>
                 <div className="license-item">
@@ -1401,7 +1451,7 @@ const LandingPage = () => {
                     }}
                     title={t('success.copy')}
                   >
-                    📋
+                    <CopyIcon size={20} />
                   </button>
                 </div>
                 {licenseData.expiresAt && (

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { apiService, LicenseData, ShopData, UserData } from '../services/api'
+import { CopyIcon, CheckIcon } from '../components/Icons'
 import './Account.css'
 
 const Account = () => {
@@ -470,7 +471,11 @@ const Account = () => {
                               className="copy-btn"
                               title={t('success.copy')}
                             >
-                              {copied === `shopId-${license.id}` ? '✓' : '📋'}
+                              {copied === `shopId-${license.id}` ? (
+                                <CheckIcon size={20} />
+                              ) : (
+                                <CopyIcon size={20} />
+                              )}
                             </button>
                           </div>
                         </div>
@@ -486,7 +491,11 @@ const Account = () => {
                                 className="copy-btn"
                                 title={t('success.copy')}
                               >
-                                {copied === `licenseKey-${license.id}` ? '✓' : '📋'}
+                                {copied === `licenseKey-${license.id}` ? (
+                                  <CheckIcon size={20} />
+                                ) : (
+                                  <CopyIcon size={20} />
+                                )}
                               </button>
                             )}
                           </div>

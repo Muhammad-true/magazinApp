@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { LicenseData } from '../services/api'
+import { CopyIcon, CheckIcon } from '../components/Icons'
 import './Success.css'
 
 const Success = () => {
@@ -69,7 +70,9 @@ const Success = () => {
     <div className="success-page">
       <div className="container">
         <div className="success-container">
-          <div className="success-icon">✓</div>
+          <div className="success-icon">
+            <CheckIcon size={64} color="white" />
+          </div>
           <h1 className="success-title">{t('success.title')}</h1>
           <p className="success-subtitle">{t('success.subtitle')}</p>
 
@@ -83,7 +86,11 @@ const Success = () => {
                   className="copy-btn"
                   title={t('success.copy')}
                 >
-                  {copied === 'shopId' ? '✓' : '📋'}
+                  {copied === 'shopId' ? (
+                    <CheckIcon size={20} />
+                  ) : (
+                    <CopyIcon size={20} />
+                  )}
                 </button>
               </div>
             </div>
@@ -97,7 +104,11 @@ const Success = () => {
                   className="copy-btn"
                   title={t('success.copy')}
                 >
-                  {copied === 'licenseKey' ? '✓' : '📋'}
+                  {copied === 'licenseKey' ? (
+                    <CheckIcon size={20} />
+                  ) : (
+                    <CopyIcon size={20} />
+                  )}
                 </button>
               </div>
             </div>
