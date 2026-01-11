@@ -178,10 +178,55 @@
 }
 
 @media (max-width: 768px) {
-  .downloads-grid {
-    grid-template-columns: 1fr;
+  .downloads-page {
+    padding: var(--spacing-md) var(--spacing-sm);
+    padding-bottom: 100px; /* Отступ для bottom nav */
   }
 
+  .downloads-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .downloads-title {
+    font-size: var(--font-size-2xl);
+    margin-top: var(--spacing-md);
+  }
+
+  .downloads-subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .downloads-section {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-xl);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .downloads-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .download-card {
+    padding: var(--spacing-md);
+  }
+
+  .download-card-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .download-card-description {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 768px) {
   .downloads-section {
     padding: var(--spacing-lg);
   }

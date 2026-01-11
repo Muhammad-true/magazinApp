@@ -360,8 +360,14 @@
 }
 
 @media (max-width: 768px) {
+  .account-page {
+    padding: var(--spacing-md) var(--spacing-sm);
+    padding-bottom: 100px; /* Отступ для bottom nav */
+  }
+
   .account-header {
     flex-direction: column;
+    gap: var(--spacing-md);
   }
 
   .account-header-left {
@@ -371,11 +377,35 @@
   .btn-back {
     width: 100%;
     justify-content: center;
+    padding: var(--spacing-md);
+  }
+
+  .account-title {
+    font-size: var(--font-size-2xl);
   }
 
   .account-section {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
   }
+
+  .account-section h3 {
+    font-size: var(--font-size-xl);
+  }
+
+  .license-card {
+    padding: var(--spacing-md);
+  }
+
+  .license-info {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .license-info-item {
+    width: 100%;
+  }
+}
 
   .license-header {
     flex-direction: column;

@@ -266,6 +266,7 @@
     flex-direction: row;
     overflow-x: auto;
     padding: var(--spacing-sm);
+    -webkit-overflow-scrolling: touch;
   }
 
   .docs-nav-item {
@@ -275,12 +276,79 @@
 }
 
 @media (max-width: 768px) {
-  .docs-main {
-    padding: var(--spacing-lg);
+  .documentation-page {
+    padding: var(--spacing-md) var(--spacing-sm);
+    padding-bottom: 100px; /* Отступ для bottom nav */
+  }
+
+  .docs-header {
+    margin-bottom: var(--spacing-xl);
   }
 
   .docs-title {
     font-size: var(--font-size-2xl);
+    margin-top: var(--spacing-md);
+  }
+
+  .docs-subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .docs-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .docs-sidebar {
+    position: static;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .docs-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: var(--spacing-sm);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .docs-nav::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .docs-nav::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .docs-nav-item {
+    white-space: nowrap;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+
+  .docs-main {
+    padding: var(--spacing-md);
+  }
+
+  .docs-section {
+    padding: var(--spacing-md);
+  }
+
+  .docs-section-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .guide-card {
+    padding: var(--spacing-md);
+  }
+
+  .guide-step {
+    padding: var(--spacing-md);
+  }
+
+  .step-content h3 {
+    font-size: var(--font-size-lg);
   }
 
   .docs-steps li {

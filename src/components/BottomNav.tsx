@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 import { apiService } from '../services/api'
 import { isMobile } from '../utils/pwa'
+import { HomeIcon, DownloadIcon, BookIcon, UserIcon, LockIcon } from './Icons'
 import './BottomNav.css'
 
 const BottomNav = () => {
@@ -21,7 +22,7 @@ const BottomNav = () => {
         to="/" 
         className={`bottom-nav-item ${isActive('/') ? 'active' : ''}`}
       >
-        <span className="bottom-nav-icon">🏠</span>
+        <HomeIcon size={24} className="bottom-nav-icon" />
         <span className="bottom-nav-label">{t('nav.home')}</span>
       </Link>
       
@@ -29,7 +30,7 @@ const BottomNav = () => {
         to="/downloads" 
         className={`bottom-nav-item ${isActive('/downloads') ? 'active' : ''}`}
       >
-        <span className="bottom-nav-icon">📥</span>
+        <DownloadIcon size={24} className="bottom-nav-icon" />
         <span className="bottom-nav-label">{t('nav.downloads')}</span>
       </Link>
       
@@ -37,7 +38,7 @@ const BottomNav = () => {
         to="/documentation?type=clothing" 
         className={`bottom-nav-item ${isActive('/documentation') ? 'active' : ''}`}
       >
-        <span className="bottom-nav-icon">📖</span>
+        <BookIcon size={24} className="bottom-nav-icon" />
         <span className="bottom-nav-label">{t('nav.documentation')}</span>
       </Link>
       
@@ -46,7 +47,7 @@ const BottomNav = () => {
           to="/account" 
           className={`bottom-nav-item ${isActive('/account') ? 'active' : ''}`}
         >
-          <span className="bottom-nav-icon">👤</span>
+          <UserIcon size={24} className="bottom-nav-icon" />
           <span className="bottom-nav-label">{t('nav.account')}</span>
         </Link>
       ) : (
@@ -54,7 +55,7 @@ const BottomNav = () => {
           to="/login" 
           className={`bottom-nav-item ${isActive('/login') ? 'active' : ''}`}
         >
-          <span className="bottom-nav-icon">🔐</span>
+          <LockIcon size={24} className="bottom-nav-icon" />
           <span className="bottom-nav-label">{t('nav.login')}</span>
         </Link>
       )}

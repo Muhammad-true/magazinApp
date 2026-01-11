@@ -36,8 +36,11 @@
 }
 
 .brand-icon {
-  font-size: 2rem;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  filter: drop-shadow(0 2px 4px rgba(94, 114, 228, 0.3));
 }
 
 .brand-text {
@@ -299,9 +302,18 @@
 }
 
 .mobile-menu-link .menu-icon {
-  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 28px;
-  text-align: center;
+  height: 28px;
+  color: var(--muted);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-link.active .menu-icon,
+.mobile-menu-link:active .menu-icon {
+  color: var(--accent);
 }
 
 .mobile-menu-link.active,

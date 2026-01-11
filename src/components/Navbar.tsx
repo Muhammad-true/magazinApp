@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 import { apiService } from '../services/api'
 import { isMobile } from '../utils/pwa'
+import { StoreIcon, HomeIcon, StarIcon, MoneyIcon, DownloadIcon, BookIcon, UserIcon, LockIcon } from './Icons'
 import './Navbar.css'
 
 const Navbar = () => {
@@ -55,7 +56,7 @@ const Navbar = () => {
         <div className="container">
           <div className="navbar-content">
             <Link to="/" className="navbar-brand" onClick={handleLinkClick}>
-              <span className="brand-icon">🏪</span>
+              <StoreIcon size={28} className="brand-icon" />
               <span className="brand-text">MagazinApp</span>
             </Link>
 
@@ -148,14 +149,14 @@ const Navbar = () => {
                     onClick={toggleMenu}
                     title={t('nav.pricing')}
                   >
-                    💰
+                    <MoneyIcon size={20} />
                   </button>
                   <button 
                     className="mobile-nav-btn"
                     onClick={toggleMenu}
                     title={t('nav.downloads')}
                   >
-                    📥
+                    <DownloadIcon size={20} />
                   </button>
                   <button 
                     className={`hamburger ${isMenuOpen ? 'active' : ''}`}
@@ -184,7 +185,7 @@ const Navbar = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mobile-menu-header">
-              <span className="brand-icon">🏪</span>
+              <StoreIcon size={28} className="brand-icon" />
               <span className="brand-text">MagazinApp</span>
               <button className="close-btn" onClick={closeMenu}>✕</button>
             </div>
@@ -195,7 +196,7 @@ const Navbar = () => {
                 className={`mobile-menu-link ${isActive('/') ? 'active' : ''}`}
                 onClick={handleLinkClick}
               >
-                <span className="menu-icon">🏠</span>
+                <HomeIcon size={24} className="menu-icon" />
                 {t('nav.home')}
               </Link>
               <a 
@@ -206,7 +207,7 @@ const Navbar = () => {
                   handleLinkClick()
                 }}
               >
-                <span className="menu-icon">⭐</span>
+                <StarIcon size={24} className="menu-icon" />
                 {t('nav.features')}
               </a>
               <a 
@@ -217,7 +218,7 @@ const Navbar = () => {
                   handleLinkClick()
                 }}
               >
-                <span className="menu-icon">💰</span>
+                <MoneyIcon size={24} className="menu-icon" />
                 {t('nav.pricing')}
               </a>
               <Link 
@@ -225,7 +226,7 @@ const Navbar = () => {
                 className={`mobile-menu-link ${isActive('/downloads') ? 'active' : ''}`}
                 onClick={handleLinkClick}
               >
-                <span className="menu-icon">📥</span>
+                <DownloadIcon size={24} className="menu-icon" />
                 {t('nav.downloads')}
               </Link>
               <Link 
@@ -233,7 +234,7 @@ const Navbar = () => {
                 className={`mobile-menu-link ${isActive('/documentation') ? 'active' : ''}`}
                 onClick={handleLinkClick}
               >
-                <span className="menu-icon">📖</span>
+                <BookIcon size={24} className="menu-icon" />
                 {t('nav.documentation')}
               </Link>
               {isAuthenticated ? (
@@ -242,7 +243,7 @@ const Navbar = () => {
                   className={`mobile-menu-link ${isActive('/account') ? 'active' : ''}`}
                   onClick={handleLinkClick}
                 >
-                  <span className="menu-icon">👤</span>
+                  <UserIcon size={24} className="menu-icon" />
                   {t('nav.account')}
                 </Link>
               ) : (
@@ -252,7 +253,7 @@ const Navbar = () => {
                     className={`mobile-menu-link ${isActive('/login') ? 'active' : ''}`}
                     onClick={handleLinkClick}
                   >
-                    <span className="menu-icon">🔐</span>
+                    <LockIcon size={24} className="menu-icon" />
                     {t('nav.login')}
                   </Link>
                   <Link 
