@@ -224,18 +224,19 @@
 
 .screenshot-card {
   scroll-snap-align: start;
-  background: var(--glass);
-  backdrop-filter: blur(14px);
-  border-radius: var(--radius);
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
 }
 
 .screenshot-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
 }
 
 .screenshot-card img {
@@ -504,21 +505,40 @@
 }
 
 .plan-card {
-  background: rgba(255, 255, 255, 0.03) !important;
-  backdrop-filter: blur(14px);
-  padding: 30px;
-  border-radius: var(--radius);
+  background: var(--bg-secondary) !important;
+  backdrop-filter: blur(20px);
+  padding: 40px 30px;
+  border-radius: var(--radius-lg);
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid var(--border);
   color: var(--text);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.plan-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.plan-card:hover::before {
+  transform: scaleX(1);
 }
 
 .plan-card:hover {
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.05) !important;
+  transform: translateY(-8px) scale(1.02);
+  background: var(--card-bg-hover) !important;
   border-color: var(--accent);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
 }
 
 .plan-card h3,
@@ -616,12 +636,13 @@
   max-width: 700px;
   margin: 0 auto;
   width: 100%;
-  background: var(--glass);
-  backdrop-filter: blur(14px);
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
   padding: 60px 48px;
-  border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
   text-align: center;
+  box-shadow: var(--shadow-soft);
 }
 
 .success-icon {
@@ -650,14 +671,21 @@
 }
 
 .license-item {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-tertiary);
   padding: 20px;
-  border-radius: 12px;
+  border-radius: var(--radius);
   margin-bottom: 16px;
   display: flex;
   align-items: center;
   gap: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft-inset);
+  transition: all 0.3s ease;
+}
+
+.license-item:hover {
+  box-shadow: var(--shadow-soft);
+  transform: translateX(4px);
 }
 
 .license-item label {

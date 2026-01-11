@@ -7,59 +7,65 @@
 }
 
 :root {
-  /* Основные цвета - темная тема */
-  --bg: #04070d;
-  --bg-secondary: #060b17;
-  --bg-tertiary: #0a0f1a;
-  --text: #eef2f8;
-  --text-secondary: #cbd5e1;
-  --muted: #9aa5b8;
-  --muted-light: #64748b;
+  /* Основные цвета - Soft UI темная тема */
+  --bg: #1a1d29;
+  --bg-secondary: #252936;
+  --bg-tertiary: #2d3142;
+  --text: #ffffff;
+  --text-secondary: #e0e6ed;
+  --muted: #a8b3c0;
+  --muted-light: #8b95a6;
   
-  /* Акцентные цвета */
-  --accent: #3b82f6;
-  --accent2: #60a5fa;
-  --accent-hover: #2563eb;
+  /* Акцентные цвета - Soft UI стиль */
+  --accent: #5e72e4;
+  --accent2: #825ee4;
+  --accent-hover: #4c63d2;
+  --accent-light: #7889e8;
   
   /* Статусные цвета */
-  --success: #10b981;
-  --success-light: #34d399;
-  --danger: #ef4444;
-  --danger-light: #f87171;
-  --warning: #f59e0b;
-  --warning-light: #fbbf24;
-  --info: #3b82f6;
-  --info-light: #60a5fa;
+  --success: #2dce89;
+  --success-light: #5deaa8;
+  --danger: #f5365c;
+  --danger-light: #ff6b8a;
+  --warning: #fb6340;
+  --warning-light: #ff8a6b;
+  --info: #11cdef;
+  --info-light: #4dd4e8;
   
-  /* Градиенты */
-  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
-  --gradient-secondary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* Градиенты - Soft UI стиль */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --gradient-bg: linear-gradient(180deg, var(--bg) 0%, var(--bg-secondary) 100%);
+  --gradient-success: linear-gradient(135deg, #2dce89 0%, #5deaa8 100%);
+  --gradient-bg: linear-gradient(180deg, #1a1d29 0%, #252936 50%, #2d3142 100%);
   
-  /* Эффекты */
-  --glass: rgba(255, 255, 255, 0.06);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-hover: rgba(255, 255, 255, 0.1);
+  /* Soft UI эффекты - мягкие тени */
+  --glass: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-hover: rgba(255, 255, 255, 0.15);
   --card-bg: rgba(255, 255, 255, 0.05);
-  --card-bg-hover: rgba(255, 255, 255, 0.08);
+  --card-bg-hover: rgba(255, 255, 255, 0.1);
   
-  /* Тени */
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.5);
-  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* Soft UI тени - мягкие и объемные */
+  --shadow-soft: 8px 8px 16px rgba(0, 0, 0, 0.4), -8px -8px 16px rgba(255, 255, 255, 0.05);
+  --shadow-soft-inset: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+  --shadow: 0 8px 26px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.6), 0 8px 25px rgba(0, 0, 0, 0.4);
+  --shadow-button: 0 4px 15px rgba(94, 114, 228, 0.4), 0 2px 5px rgba(0, 0, 0, 0.2);
+  --shadow-button-hover: 0 8px 25px rgba(94, 114, 228, 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 -2px 4px rgba(255, 255, 255, 0.05);
   
   /* Границы */
   --border: rgba(255, 255, 255, 0.1);
   --border-hover: rgba(255, 255, 255, 0.2);
-  --border-focus: rgba(59, 130, 246, 0.5);
+  --border-focus: rgba(94, 114, 228, 0.6);
   
-  /* Радиусы */
-  --radius: 12px;
-  --radius-sm: 8px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
+  /* Радиусы - больше скруглений для Soft UI */
+  --radius: 16px;
+  --radius-sm: 12px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
   
   /* Отступы */
   --spacing-xs: 0.5rem;
