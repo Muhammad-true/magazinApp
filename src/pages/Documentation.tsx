@@ -24,55 +24,21 @@ const Documentation = () => {
             </div>
           </div>
           
-          <div style={{
-            textAlign: 'center',
-            padding: '100px 20px',
-            maxWidth: '600px',
-            margin: '0 auto'
-          }}>
-            <div style={{
-              fontSize: '6rem',
-              marginBottom: '30px'
-            }}>🚧</div>
-            <h2 style={{
-              fontSize: '36px',
-              fontWeight: 700,
-              color: 'var(--text)',
-              marginBottom: '20px'
-            }}>
+          <div className="coming-soon-container">
+            <div className="coming-soon-icon">🚧</div>
+            <h2 className="coming-soon-title">
               Скоро будет доступно!
             </h2>
-            <p style={{
-              fontSize: '18px',
-              color: 'var(--muted)',
-              lineHeight: '1.6',
-              marginBottom: '40px'
-            }}>
+            <p className="coming-soon-text">
               Мы работаем над созданием подробного руководства для аптек. 
               Оно будет включать все необходимые инструкции с простыми объяснениями и иконками.
             </p>
-            <div style={{
-              background: 'rgba(59, 130, 246, 0.1)',
-              padding: '24px',
-              borderRadius: '12px',
-              border: '1px solid rgba(59, 130, 246, 0.2)',
-              marginBottom: '30px'
-            }}>
-              <p style={{
-                color: 'var(--text)',
-                fontSize: '16px',
-                margin: 0
-              }}>
+            <div className="coming-soon-note">
+              <p>
                 💡 <strong>Следите за обновлениями!</strong> Руководство появится в ближайшее время.
               </p>
             </div>
-            <Link to="/documentation?type=clothing" className="btn-primary" style={{
-              display: 'inline-block',
-              padding: '16px 32px',
-              textDecoration: 'none',
-              fontSize: '16px',
-              fontWeight: 600
-            }}>
+            <Link to="/documentation?type=clothing" className="btn btn-primary coming-soon-link">
               Посмотреть руководство для магазинов →
             </Link>
           </div>

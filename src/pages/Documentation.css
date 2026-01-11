@@ -4,6 +4,56 @@
   padding: var(--spacing-xl) var(--spacing-md);
 }
 
+/* Coming Soon стили */
+.coming-soon-container {
+  text-align: center;
+  padding: 80px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.coming-soon-icon {
+  font-size: 6rem;
+  margin-bottom: 30px;
+  line-height: 1;
+}
+
+.coming-soon-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.coming-soon-text {
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.coming-soon-note {
+  background: rgba(94, 114, 228, 0.1);
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(94, 114, 228, 0.2);
+  margin-bottom: 30px;
+}
+
+.coming-soon-note p {
+  color: var(--text);
+  font-size: 16px;
+  margin: 0;
+}
+
+.coming-soon-link {
+  display: inline-block;
+  padding: 16px 32px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .docs-header {
   margin-bottom: var(--spacing-2xl);
 }
@@ -84,11 +134,14 @@
 
 .docs-main {
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   border-radius: var(--radius-lg);
   padding: var(--spacing-2xl);
   border: 1px solid var(--border);
   min-height: 600px;
+  box-shadow: var(--shadow-soft);
+  overflow-x: hidden;
+  word-wrap: break-word;
 }
 
 .docs-section {
@@ -329,6 +382,8 @@
 
   .docs-main {
     padding: var(--spacing-md);
+    min-height: auto;
+    overflow-x: hidden;
   }
 
   .docs-section {
@@ -345,20 +400,100 @@
 
   .guide-step {
     padding: var(--spacing-md);
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .step-number {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  .step-content {
+    width: 100%;
   }
 
   .step-content h3 {
     font-size: var(--font-size-lg);
+    flex-wrap: wrap;
+  }
+
+  .step-details {
+    margin-top: var(--spacing-md);
+  }
+
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .detail-icon {
+    font-size: 20px;
   }
 
   .docs-steps li {
     padding-left: calc(var(--spacing-lg) + 40px);
+    font-size: var(--font-size-sm);
   }
 
   .docs-steps li::before {
     width: 28px;
     height: 28px;
     font-size: var(--font-size-xs);
+  }
+
+  .docs-subsection {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .docs-subsection h3 {
+    font-size: var(--font-size-lg);
+  }
+
+  .docs-qa {
+    gap: var(--spacing-md);
+  }
+
+  .docs-question {
+    padding: var(--spacing-md);
+  }
+
+  /* Coming Soon адаптивность */
+  .coming-soon-container {
+    padding: 60px 16px;
+  }
+
+  .coming-soon-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+
+  .coming-soon-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: 16px;
+  }
+
+  .coming-soon-text {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-xl);
+    padding: 0 var(--spacing-sm);
+  }
+
+  .coming-soon-note {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .coming-soon-note p {
+    font-size: var(--font-size-sm);
+  }
+
+  .coming-soon-link {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-base);
   }
 }
 
@@ -467,19 +602,42 @@
   margin-bottom: 6px;
 }
 
-@media (max-width: 768px) {
+/* Дополнительные стили для guide-step на мобильных уже включены в основной медиа-запрос выше */
+
+@media (max-width: 480px) {
+  .documentation-page {
+    padding: var(--spacing-sm);
+    padding-bottom: 100px;
+  }
+
+  .docs-main {
+    padding: var(--spacing-sm);
+    min-height: auto;
+  }
+
   .guide-step {
-    flex-direction: column;
-    padding: 24px;
+    padding: var(--spacing-sm);
   }
 
   .step-number {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
   }
 
   .step-content h3 {
-    font-size: 20px;
+    font-size: var(--font-size-base);
+  }
+
+  .coming-soon-container {
+    padding: 40px 12px;
+  }
+
+  .coming-soon-icon {
+    font-size: 3rem;
+  }
+
+  .coming-soon-title {
+    font-size: var(--font-size-xl);
   }
 }

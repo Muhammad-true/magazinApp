@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 import { apiService } from '../services/api'
 import { isMobile } from '../utils/pwa'
-import { HomeIcon, DownloadIcon, BookIcon, UserIcon, LockIcon } from './Icons'
 import './BottomNav.css'
+import { BookIcon, DownloadIcon, HomeIcon, LockIcon, UserIcon } from './Icons'
 
 const BottomNav = () => {
   const { t } = useTranslation()
