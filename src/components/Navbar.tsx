@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useLocation } from 'react-router-dom'
 import { apiService } from '../services/api'
 import { isMobile } from '../utils/pwa'
-import { BookIcon, DownloadIcon, HomeIcon, LockIcon, MoneyIcon, StarIcon, StoreIcon, UserIcon, RegisterIcon } from './Icons'
+import { BookIcon, DownloadIcon, HomeIcon, LockIcon, MoneyIcon, RegisterIcon, StarIcon, StoreIcon, UserIcon } from './Icons'
 import './Navbar.css'
 
 const Navbar = () => {

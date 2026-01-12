@@ -1,8 +1,11 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { 
-  PillIcon, StoreIcon, DesktopIcon, PhoneIcon, PackageIcon 
+import {
+    DesktopIcon,
+    PackageIcon,
+    PhoneIcon,
+    PillIcon, StoreIcon
 } from '../components/Icons'
 import './Downloads.css'
 

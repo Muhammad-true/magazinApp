@@ -1,11 +1,31 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useSearchParams } from 'react-router-dom'
-import { 
-  PillIcon, ConstructionIcon, LightbulbIcon, RocketIcon, MoneyIcon, 
-  PackageIcon, UsersIcon, ChartIcon, SettingsIcon, DownloadIcon, 
-  DesktopIcon, LockIcon, CheckIcon, PlayIcon, SearchIcon, CreditCardIcon, 
-  CopyIcon, EditIcon, CalendarIcon, StarIcon, HomeIcon, UserIcon, PhoneIcon
+import {
+    CalendarIcon,
+    ChartIcon,
+    CheckIcon,
+    ConstructionIcon,
+    CopyIcon,
+    CreditCardIcon,
+    DesktopIcon,
+    DownloadIcon,
+    EditIcon,
+    HomeIcon,
+    LightbulbIcon,
+    LockIcon,
+    MoneyIcon,
+    PackageIcon,
+    PhoneIcon,
+    PillIcon,
+    PlayIcon,
+    RocketIcon,
+    SearchIcon,
+    SettingsIcon,
+    ShirtIcon,
+    StarIcon,
+    UserIcon,
+    UsersIcon
 } from '../components/Icons'
 import './Documentation.css'
 
@@ -82,7 +102,12 @@ const Documentation = () => {
             ← {t('nav.home')}
           </Link>
           <div>
-            <h1 className="docs-title">👕 Обучение для магазинов</h1>
+            <h1 className="docs-title">
+              <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '12px' }}>
+                <ShirtIcon size={32} />
+              </span>
+              Обучение для магазинов
+            </h1>
             <p className="docs-subtitle">Простое руководство по работе с системой учета</p>
           </div>
         </div>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { CheckIcon, CopyIcon } from '../components/Icons'
 import { apiService, LicenseData, ShopData, UserData } from '../services/api'
-import { CopyIcon, CheckIcon } from '../components/Icons'
 import './Account.css'
 
 const Account = () => {

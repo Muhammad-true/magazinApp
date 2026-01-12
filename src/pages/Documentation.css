@@ -192,10 +192,19 @@
   gap: var(--spacing-md);
   padding-bottom: var(--spacing-md);
   border-bottom: 2px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.docs-section-title > span {
+  flex-shrink: 0;
 }
 
 .section-icon {
   font-size: var(--font-size-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .docs-subsection {
@@ -373,6 +382,14 @@
   .docs-title {
     font-size: var(--font-size-2xl);
     margin-top: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .docs-title > span {
+    flex-shrink: 0;
   }
 
   .docs-subtitle {
@@ -410,6 +427,11 @@
     white-space: nowrap;
     padding: var(--spacing-sm) var(--spacing-md);
     font-size: var(--font-size-sm);
+    min-width: fit-content;
+  }
+
+  .docs-nav-item span:last-child {
+    white-space: nowrap;
   }
 
   .docs-main {
@@ -419,15 +441,22 @@
   }
 
   .docs-section {
-    padding: var(--spacing-md);
+    padding: 0;
   }
 
   .docs-section-title {
     font-size: var(--font-size-xl);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .section-icon {
+    font-size: var(--font-size-lg);
   }
 
   .guide-card {
-    padding: var(--spacing-md);
+    padding: 0;
+    gap: var(--spacing-md);
   }
 
   .guide-step {
@@ -449,10 +478,22 @@
   .step-content h3 {
     font-size: var(--font-size-lg);
     flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    line-height: 1.4;
+  }
+
+  .step-content h3 > span {
+    flex-shrink: 0;
+  }
+
+  .step-content > p {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-md);
   }
 
   .step-details {
     margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
   }
 
   .detail-item {
@@ -462,7 +503,23 @@
   }
 
   .detail-icon {
-    font-size: 20px;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .detail-item > div {
+    width: 100%;
+  }
+
+  .detail-item strong {
+    font-size: var(--font-size-sm);
+  }
+
+  .detail-item p,
+  .detail-item ul,
+  .detail-item ol {
+    font-size: var(--font-size-xs);
   }
 
   .docs-steps li {
@@ -606,6 +663,11 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
+}
+
+.step-content h3 > span {
+  flex-shrink: 0;
 }
 
 .step-content > p {

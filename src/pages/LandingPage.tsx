@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
+import {
+    BookIcon,
+    ChartIcon,
+    CheckIcon,
+    CopyIcon,
+    LockIcon,
+    MoneyIcon, PackageIcon,
+    PhoneIcon,
+    PillIcon, ShirtIcon,
+    TagIcon, UsersIcon
+} from '../components/Icons'
 import { apiService, City, RegisterData, ShopData } from '../services/api'
 import { getCityName } from '../services/cities'
-import { 
-  PillIcon, ShirtIcon, BookIcon, MoneyIcon, PackageIcon, ChartIcon, 
-  TagIcon, UsersIcon, PhoneIcon, LockIcon, 
-  CopyIcon, CheckIcon
-} from '../components/Icons'
 import './LandingPage.css'
 
 const LandingPage = () => {
