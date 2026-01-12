@@ -1,4 +1,31 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://159.89.99.252:8080/api/v1'
+// Определяем базовый URL API
+// ВАЖНО: Если сайт работает на HTTPS, API также должен работать на HTTPS
+// Иначе браузер заблокирует запросы (Mixed Content)
+const getApiBaseUrl = (): string => {
+  // Если указана переменная окружения - используем её (приоритет)
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL
+  }
+  
+  // Проверяем, работает ли сайт на HTTPS
+  const isHttps = typeof window !== 'undefined' && window.location.protocol === 'https:'
+  
+  // Если сайт на HTTPS, но API на HTTP - пытаемся использовать HTTPS версию
+  // ВНИМАНИЕ: Это работает только если сервер API поддерживает HTTPS
+  if (isHttps) {
+    // Пробуем HTTPS версию API (если сервер поддерживает)
+    const httpUrl = 'http://159.89.99.252:8080/api/v1'
+    const httpsUrl = httpUrl.replace('http://', 'https://')
+    // Возвращаем HTTPS версию (пользователь должен настроить SSL на сервере)
+    // Если сервер не поддерживает HTTPS, нужно настроить переменную окружения VITE_API_URL
+    return httpsUrl
+  }
+  
+  // Для локальной разработки (HTTP) используем HTTP
+  return 'http://159.89.99.252:8080/api/v1'
+}
+
+const API_BASE_URL = getApiBaseUrl()
 
 export interface RegisterData {
   name: string
@@ -410,8 +437,15 @@ class ApiService {
       
       // Более детальное сообщение об ошибке
       let errorMessage = 'Не удалось загрузить города'
-      if (error.message && error.message.includes('Failed to fetch')) {
-        errorMessage = `Не удалось подключиться к API. Проверьте, что сервер запущен на ${API_BASE_URL}`
+      
+      // Проверяем на Mixed Content ошибку
+      if (error.message && (error.message.includes('Mixed Content') || error.message.includes('Failed to fetch'))) {
+        const isHttps = typeof window !== 'undefined' && window.location.protocol === 'https:'
+        if (isHttps && url.startsWith('http://')) {
+          errorMessage = 'Ошибка безопасности: сайт использует HTTPS, но API работает на HTTP. Пожалуйста, настройте SSL сертификат на сервере API или используйте HTTPS версию API через переменную окружения VITE_API_URL.'
+        } else {
+          errorMessage = `Не удалось подключиться к API. Проверьте, что сервер запущен на ${API_BASE_URL}`
+        }
       } else if (error.message) {
         errorMessage = `Ошибка: ${error.message}`
       }
