@@ -858,6 +858,118 @@
   border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
+/* Галерея скриншотов */
+.screenshot-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.screenshot-modal__inner {
+  position: relative;
+  width: min(900px, 100%);
+  max-height: 90vh;
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.screenshot-modal__image {
+  position: relative;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.screenshot-modal__image img {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.screenshot-modal__caption {
+  text-align: center;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.screenshot-modal__nav {
+  background: transparent;
+  color: var(--text);
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.screenshot-modal__nav:hover {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.screenshot-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .screenshot-modal {
+    padding: 12px;
+  }
+
+  .screenshot-modal__inner {
+    grid-template-columns: 36px 1fr 36px;
+  }
+
+  .screenshot-modal__nav {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .screenshot-modal__inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .screenshot-modal__nav {
+    display: none;
+  }
+
+  .screenshot-modal__close {
+    top: 8px;
+    right: 8px;
+  }
+}
+
 /* Business Type Cards */
 .business-type-card {
   background: var(--glass);

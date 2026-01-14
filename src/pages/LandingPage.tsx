@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import type { TouchEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 import {
@@ -230,6 +231,42 @@ const LandingPage = () => {
     { id: 10, title: 'Отчеты 3', image: '/assets/otchot3.png' },
     { id: 11, title: 'Пользователи', image: '/assets/users.png' },
   ]
+
+  // Галерея скриншотов
+  const [activeScreenshot, setActiveScreenshot] = useState<number | null>(null)
+  const touchStartXRef = useRef<number | null>(null)
+
+  const openScreenshot = (index: number) => setActiveScreenshot(index)
+  const closeScreenshot = () => {
+    setActiveScreenshot(null)
+    touchStartXRef.current = null
+  }
+  const nextScreenshot = () => {
+    setActiveScreenshot((prev) => {
+      if (prev === null) return prev
+      return (prev + 1) % screenshots.length
+    })
+  }
+  const prevScreenshot = () => {
+    setActiveScreenshot((prev) => {
+      if (prev === null) return prev
+      return (prev - 1 + screenshots.length) % screenshots.length
+    })
+  }
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    touchStartXRef.current = e.touches[0].clientX
+  }
+  const handleTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
+    if (touchStartXRef.current === null) return
+    const delta = e.changedTouches[0].clientX - touchStartXRef.current
+    const threshold = 50
+    if (delta > threshold) {
+      prevScreenshot()
+    } else if (delta < -threshold) {
+      nextScreenshot()
+    }
+    touchStartXRef.current = null
+  }
 
   const loadShops = async (): Promise<ShopData[]> => {
     setLoadingShops(true)
@@ -971,6 +1008,7 @@ const LandingPage = () => {
                 transition: 'all 0.3s ease',
                 cursor: 'pointer'
               }}
+              onClick={() => openScreenshot(screenshot.id - 1)}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-8px)'
                 e.currentTarget.style.boxShadow = '0 12px 32px rgba(0, 0, 0, 0.3)'
@@ -1029,6 +1067,31 @@ const LandingPage = () => {
               </div>
             ))}
           </div>
+
+          {activeScreenshot !== null && screenshots[activeScreenshot] && (
+            <div
+              className="screenshot-modal"
+              onClick={closeScreenshot}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div className="screenshot-modal__inner" onClick={(e) => e.stopPropagation()}>
+                <button className="screenshot-modal__close" onClick={closeScreenshot} aria-label="Закрыть">
+                  ✕
+                </button>
+                <button className="screenshot-modal__nav screenshot-modal__nav--prev" onClick={prevScreenshot} aria-label="Предыдущий">
+                  ‹
+                </button>
+                <div className="screenshot-modal__image">
+                  <img src={screenshots[activeScreenshot].image} alt={screenshots[activeScreenshot].title} />
+                  <div className="screenshot-modal__caption">{screenshots[activeScreenshot].title}</div>
+                </div>
+                <button className="screenshot-modal__nav screenshot-modal__nav--next" onClick={nextScreenshot} aria-label="Следующий">
+                  ›
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* Footer */}
           <footer style={{ marginTop: '80px', textAlign: 'center', color: 'var(--muted)', paddingBottom: '40px', fontSize: '14px' }}>
