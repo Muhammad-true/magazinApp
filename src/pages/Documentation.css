@@ -444,18 +444,14 @@
   }
 
   .docs-nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow-x: visible;
-    overflow-y: visible;
-    padding: var(--spacing-xs);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: var(--spacing-xs);
+    padding: var(--spacing-xs);
     width: 100%;
     max-width: 100%;
     margin: 0;
-    display: flex;
-    align-items: stretch;
-    justify-content: flex-start;
+    overflow: visible;
   }
 
   .docs-nav::-webkit-scrollbar {
@@ -468,18 +464,19 @@
   }
 
   .docs-nav-item {
-    white-space: nowrap;
+    white-space: normal;
     padding: var(--spacing-sm);
     font-size: var(--font-size-sm);
-    min-width: 140px;
+    min-width: 0;
     gap: var(--spacing-xs);
-    flex: 1 1 calc(50% - var(--spacing-sm));
-    display: flex;
+    width: 100%;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     height: auto;
     min-height: 44px;
     box-sizing: border-box;
+    text-align: center;
   }
 
   .docs-nav-icon {
@@ -967,7 +964,8 @@
   .docs-nav {
     padding: 6px;
     gap: 4px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     overflow-x: visible;
   }
 
@@ -975,9 +973,10 @@
     padding: 6px var(--spacing-xs);
     font-size: 11px;
     gap: 4px;
-    flex: 1 1 100%;
+    width: 100%;
     justify-content: center;
     min-width: 0;
+    text-align: center;
   }
 
   .docs-nav-icon {
