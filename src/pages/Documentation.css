@@ -2,6 +2,10 @@
   min-height: 100vh;
   background: var(--gradient-bg);
   padding: var(--spacing-xl) var(--spacing-md);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 /* Coming Soon стили */
@@ -143,9 +147,14 @@
   border: 1px solid var(--glass-border);
   min-height: 600px;
   box-shadow: var(--shadow-soft);
-  overflow-x: hidden;
+  overflow-x: visible;
+  overflow-y: visible;
   word-wrap: break-word;
+  overflow-wrap: break-word;
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .docs-main::before {
@@ -418,6 +427,9 @@
   .docs-content {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
   }
 
   .docs-sidebar {
@@ -428,10 +440,16 @@
   .docs-nav {
     flex-direction: row;
     overflow-x: auto;
-    padding: var(--spacing-xs);
+    overflow-y: visible;
+    padding: var(--spacing-sm);
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-sm);
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    align-items: stretch;
   }
 
   .docs-nav::-webkit-scrollbar {
@@ -445,10 +463,15 @@
 
   .docs-nav-item {
     white-space: nowrap;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    font-size: var(--font-size-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
     min-width: fit-content;
     gap: var(--spacing-xs);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    height: auto;
+    min-height: 44px;
   }
 
   .docs-nav-icon {
@@ -470,8 +493,11 @@
   .docs-main {
     padding: var(--spacing-sm);
     min-height: auto;
-    overflow-x: hidden;
+    overflow-x: visible;
+    overflow-y: visible;
     border-radius: var(--radius);
+    width: 100%;
+    max-width: 100%;
   }
 
   .docs-section {
@@ -500,15 +526,23 @@
 
   .guide-card {
     padding: 0;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
     margin-top: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
   }
 
   .guide-step {
-    padding: var(--spacing-sm);
+    padding: var(--spacing-md);
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
     border-radius: var(--radius);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+    margin-bottom: var(--spacing-md);
   }
 
   .guide-step:hover {
@@ -524,6 +558,10 @@
 
   .step-content {
     width: 100%;
+    max-width: 100%;
+    overflow: visible;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .step-content h3 {
@@ -551,8 +589,12 @@
 
   .step-details {
     margin-top: var(--spacing-sm);
-    padding: var(--spacing-sm);
+    padding: var(--spacing-md);
     border-radius: var(--radius-sm);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
   }
 
   .detail-item {
@@ -575,7 +617,11 @@
 
   .detail-item > div {
     width: 100%;
+    max-width: 100%;
     flex: 1;
+    overflow: visible;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .detail-item strong {
@@ -720,7 +766,10 @@
   transition: all 0.3s ease;
   box-shadow: var(--shadow-soft);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .guide-step::before {
@@ -767,6 +816,11 @@
 
 .step-content {
   flex: 1;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .step-content h3 {
@@ -796,12 +850,21 @@
   border-radius: 12px;
   padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .detail-item {
   display: flex;
   gap: 16px;
   align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
 }
 
 .detail-icon {
@@ -811,6 +874,11 @@
 
 .detail-item > div {
   flex: 1;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .detail-item strong {
@@ -894,8 +962,12 @@
   }
 
   .docs-main {
-    padding: var(--spacing-xs);
+    padding: var(--spacing-sm);
     border-radius: var(--radius-sm);
+    width: 100%;
+    max-width: 100%;
+    overflow-x: visible;
+    overflow-y: visible;
   }
 
   .docs-section-title {
@@ -920,8 +992,11 @@
   }
 
   .guide-step {
-    padding: var(--spacing-xs);
-    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: var(--spacing-sm);
   }
 
   .step-number {
@@ -947,8 +1022,10 @@
   }
 
   .step-details {
-    padding: var(--spacing-xs);
-    margin-top: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    width: 100%;
+    max-width: 100%;
   }
 
   .detail-icon {
