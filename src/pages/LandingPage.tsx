@@ -233,6 +233,10 @@ const LandingPage = () => {
 
   const [activeScreenshot, setActiveScreenshot] = useState<number | null>(null)
   const [screenshotZoom, setScreenshotZoom] = useState<number>(1)
+  const pinchState = useRef<{
+    initialDistance: number
+    initialZoom: number
+  } | null>(null)
 
   const handleOpenScreenshot = (index: number) => {
     setActiveScreenshot(index)
@@ -256,16 +260,32 @@ const LandingPage = () => {
     )
   }
 
-  const handleZoomIn = () => {
-    setScreenshotZoom((z) => Math.min(z + 0.2, 3))
+  const clampZoom = (value: number) => Math.min(Math.max(value, 0.6), 3)
+
+  const handleDoubleTap = () => {
+    setScreenshotZoom((z) => (z > 1 ? 1 : 2))
   }
 
-  const handleZoomOut = () => {
-    setScreenshotZoom((z) => Math.max(z - 0.2, 0.6))
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length === 2) {
+      const [t1, t2] = e.touches
+      const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
+      pinchState.current = { initialDistance: dist, initialZoom: screenshotZoom }
+    }
   }
 
-  const handleResetZoom = () => {
-    setScreenshotZoom(1)
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length === 2 && pinchState.current) {
+      e.preventDefault()
+      const [t1, t2] = e.touches
+      const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
+      const nextZoom = clampZoom(pinchState.current.initialZoom * (dist / pinchState.current.initialDistance))
+      setScreenshotZoom(nextZoom)
+    }
+  }
+
+  const handleTouchEnd = () => {
+    pinchState.current = null
   }
 
   useEffect(() => {
@@ -1096,43 +1116,29 @@ const LandingPage = () => {
                 <button className="screenshot-modal__nav screenshot-modal__nav--prev" onClick={handlePrevScreenshot}>
                   ‹
                 </button>
-                <div className="screenshot-modal__image-wrapper">
+                <div
+                  className="screenshot-modal__image-wrapper"
+                  onDoubleClick={handleDoubleTap}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                  onTouchCancel={handleTouchEnd}
+                >
                   <img
                     src={screenshots[activeScreenshot].image}
                     alt={screenshots[activeScreenshot].title}
-                    style={{ transform: `scale(${screenshotZoom})`, transition: 'transform 0.2s ease', transformOrigin: 'center center' }}
+                    style={{
+                      transform: `scale(${screenshotZoom})`,
+                      transition: 'transform 0.15s ease',
+                      transformOrigin: 'center center',
+                      touchAction: 'none',
+                    }}
                   />
                   <div className="screenshot-modal__caption">
                     {screenshots[activeScreenshot].title}
                     <span className="screenshot-modal__counter">
                       {activeScreenshot + 1} / {screenshots.length}
                     </span>
-                    <div style={{ display: 'flex', gap: '8px', marginLeft: '12px' }}>
-                      <button
-                        type="button"
-                        className="screenshot-modal__nav"
-                        onClick={handleZoomOut}
-                        aria-label="Уменьшить"
-                      >
-                        −
-                      </button>
-                      <button
-                        type="button"
-                        className="screenshot-modal__nav"
-                        onClick={handleResetZoom}
-                        aria-label="Сбросить масштаб"
-                      >
-                        1×
-                      </button>
-                      <button
-                        type="button"
-                        className="screenshot-modal__nav"
-                        onClick={handleZoomIn}
-                        aria-label="Увеличить"
-                      >
-                        +
-                      </button>
-                    </div>
             </div>
           </div>
                 <button className="screenshot-modal__nav screenshot-modal__nav--next" onClick={handleNextScreenshot}>
