@@ -1149,8 +1149,11 @@ const LandingPage = () => {
           )}
 
           {/* Footer */}
-          <footer style={{ marginTop: '80px', textAlign: 'center', color: 'var(--muted)', paddingBottom: '40px', fontSize: '14px' }}>
-            © 2025 MagazinApp — Связь: sales@magazinapp.example
+          <footer style={{ marginTop: '80px', textAlign: 'center', color: 'var(--muted)', paddingBottom: '40px', fontSize: '14px', lineHeight: 1.6 }}>
+            © 2025 MagazinApp — Связь:
+            {' '}<a href="mailto:sales@magazinapp.example" style={{ color: 'var(--accent)' }}>sales@magazinapp.example</a>,
+            {' '}<a href="mailto:sodiqov.online@gmail.com" style={{ color: 'var(--accent)' }}>sodiqov.online@gmail.com</a>,
+            {' '}<a href="https://t.me/MuhammadTrue" style={{ color: 'var(--accent)' }}>Telegram: @MuhammadTrue</a>
           </footer>
         </div>
       )}
