@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
-import type { TouchEvent } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 import {
@@ -232,41 +231,54 @@ const LandingPage = () => {
     { id: 11, title: 'Пользователи', image: '/assets/users.png' },
   ]
 
-  // Галерея скриншотов
   const [activeScreenshot, setActiveScreenshot] = useState<number | null>(null)
-  const touchStartXRef = useRef<number | null>(null)
+  const [screenshotZoom, setScreenshotZoom] = useState<number>(1)
 
-  const openScreenshot = (index: number) => setActiveScreenshot(index)
-  const closeScreenshot = () => {
+  const handleOpenScreenshot = (index: number) => {
+    setActiveScreenshot(index)
+    setScreenshotZoom(1)
+  }
+
+  const handleCloseScreenshot = () => {
     setActiveScreenshot(null)
-    touchStartXRef.current = null
+    setScreenshotZoom(1)
   }
-  const nextScreenshot = () => {
-    setActiveScreenshot((prev) => {
-      if (prev === null) return prev
-      return (prev + 1) % screenshots.length
-    })
+
+  const handlePrevScreenshot = () => {
+    setActiveScreenshot(prev =>
+      prev === null ? null : (prev - 1 + screenshots.length) % screenshots.length,
+    )
   }
-  const prevScreenshot = () => {
-    setActiveScreenshot((prev) => {
-      if (prev === null) return prev
-      return (prev - 1 + screenshots.length) % screenshots.length
-    })
+
+  const handleNextScreenshot = () => {
+    setActiveScreenshot(prev =>
+      prev === null ? null : (prev + 1) % screenshots.length,
+    )
   }
-  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
-    touchStartXRef.current = e.touches[0].clientX
+
+  const handleZoomIn = () => {
+    setScreenshotZoom((z) => Math.min(z + 0.2, 3))
   }
-  const handleTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
-    if (touchStartXRef.current === null) return
-    const delta = e.changedTouches[0].clientX - touchStartXRef.current
-    const threshold = 50
-    if (delta > threshold) {
-      prevScreenshot()
-    } else if (delta < -threshold) {
-      nextScreenshot()
+
+  const handleZoomOut = () => {
+    setScreenshotZoom((z) => Math.max(z - 0.2, 0.6))
+  }
+
+  const handleResetZoom = () => {
+    setScreenshotZoom(1)
+  }
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (activeScreenshot === null) return
+      if (event.key === 'Escape') handleCloseScreenshot()
+      if (event.key === 'ArrowLeft') handlePrevScreenshot()
+      if (event.key === 'ArrowRight') handleNextScreenshot()
     }
-    touchStartXRef.current = null
-  }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [activeScreenshot, screenshots.length])
 
   const loadShops = async (): Promise<ShopData[]> => {
     setLoadingShops(true)
@@ -484,7 +496,7 @@ const LandingPage = () => {
                 lineHeight: '1.2'
               }}>
                 Выберите программу для вашего бизнеса
-              </h1>
+                </h1>
               <p style={{ 
                 fontSize: '20px', 
                 color: 'var(--muted)', 
@@ -617,9 +629,9 @@ const LandingPage = () => {
               {/* Магазин одежды */}
               <div 
                 style={{
-                  background: 'var(--glass)',
-                  backdropFilter: 'blur(14px)',
-                  borderRadius: 'var(--radius)',
+                background: 'var(--glass)',
+                backdropFilter: 'blur(14px)',
+                borderRadius: 'var(--radius)',
                   border: '2px solid rgba(255, 255, 255, 0.1)',
                   padding: '40px',
                   transition: 'all 0.3s ease',
@@ -641,8 +653,8 @@ const LandingPage = () => {
                   fontSize: '5rem', 
                   marginBottom: '24px',
                   textAlign: 'center',
-                  display: 'flex',
-                  justifyContent: 'center',
+                display: 'flex',
+                justifyContent: 'center',
                   alignItems: 'center'
                 }}>
                   <ShirtIcon size={80} color="var(--accent)" />
@@ -657,7 +669,7 @@ const LandingPage = () => {
                   MagazinApp для Магазинов
                 </h2>
                 <p style={{ 
-                  color: 'var(--muted)', 
+                color: 'var(--muted)',
                   fontSize: '16px', 
                   lineHeight: '1.6',
                   marginBottom: '24px',
@@ -725,7 +737,7 @@ const LandingPage = () => {
                     </span>
                     Обучение для магазинов
                   </Link>
-                </div>
+              </div>
               </div>
             </div>
 
@@ -798,7 +810,7 @@ const LandingPage = () => {
             <div className="feature-item">
               <div className="feature-icon">
                 <ChartIcon size={32} color="var(--accent)" />
-              </div>
+          </div>
               <h3>Отчеты и аналитика</h3>
               <p>Детальная аналитика продаж и движения товаров</p>
               <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
@@ -808,7 +820,7 @@ const LandingPage = () => {
                 <li>Статистика по периодам</li>
                 <li>Экспорт данных</li>
               </ul>
-          </div>
+            </div>
             <div className="feature-item">
               <div className="feature-icon">☁️</div>
               <h3>Облачная синхронизация</h3>
@@ -950,7 +962,7 @@ const LandingPage = () => {
                 )}
               </button>
             )}
-          </div>
+            </div>
 
           {/* Получение ключа */}
           <div style={{ 
@@ -996,29 +1008,32 @@ const LandingPage = () => {
             Посмотрите, как выглядит наше приложение изнутри
           </p>
           <div className="screenshots-container">
-            {screenshots.map((screenshot) => (
-              <div key={screenshot.id} className="screenshot-card" style={{
-                minWidth: '320px',
-                maxWidth: '400px',
-                background: 'var(--glass)',
-                backdropFilter: 'blur(14px)',
-                borderRadius: 'var(--radius)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                overflow: 'hidden',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer'
-              }}
-              onClick={() => openScreenshot(screenshot.id - 1)}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px)'
-                e.currentTarget.style.boxShadow = '0 12px 32px rgba(0, 0, 0, 0.3)'
-                e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.4)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)'
-                e.currentTarget.style.boxShadow = 'none'
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'
-              }}
+            {screenshots.map((screenshot, index) => (
+              <div
+                key={screenshot.id}
+                className="screenshot-card"
+                style={{
+                  minWidth: '320px',
+                  maxWidth: '400px',
+                  background: 'var(--glass)',
+                  backdropFilter: 'blur(14px)',
+                  borderRadius: 'var(--radius)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-8px)'
+                  e.currentTarget.style.boxShadow = '0 12px 32px rgba(0, 0, 0, 0.3)'
+                  e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.4)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = 'none'
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'
+                }}
+                onClick={() => handleOpenScreenshot(index)}
               >
                 <div style={{
                   width: '100%',
@@ -1068,25 +1083,59 @@ const LandingPage = () => {
             ))}
           </div>
 
-          {activeScreenshot !== null && screenshots[activeScreenshot] && (
-            <div
-              className="screenshot-modal"
-              onClick={closeScreenshot}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-            >
-              <div className="screenshot-modal__inner" onClick={(e) => e.stopPropagation()}>
-                <button className="screenshot-modal__close" onClick={closeScreenshot} aria-label="Закрыть">
+          {activeScreenshot !== null && (
+            <div className="screenshot-modal" onClick={handleCloseScreenshot}>
+              <div className="screenshot-modal__backdrop" />
+              <div
+                className="screenshot-modal__content"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button className="screenshot-modal__close" onClick={handleCloseScreenshot}>
                   ✕
-                </button>
-                <button className="screenshot-modal__nav screenshot-modal__nav--prev" onClick={prevScreenshot} aria-label="Предыдущий">
+              </button>
+                <button className="screenshot-modal__nav screenshot-modal__nav--prev" onClick={handlePrevScreenshot}>
                   ‹
                 </button>
-                <div className="screenshot-modal__image">
-                  <img src={screenshots[activeScreenshot].image} alt={screenshots[activeScreenshot].title} />
-                  <div className="screenshot-modal__caption">{screenshots[activeScreenshot].title}</div>
-                </div>
-                <button className="screenshot-modal__nav screenshot-modal__nav--next" onClick={nextScreenshot} aria-label="Следующий">
+                <div className="screenshot-modal__image-wrapper">
+                  <img
+                    src={screenshots[activeScreenshot].image}
+                    alt={screenshots[activeScreenshot].title}
+                    style={{ transform: `scale(${screenshotZoom})`, transition: 'transform 0.2s ease', transformOrigin: 'center center' }}
+                  />
+                  <div className="screenshot-modal__caption">
+                    {screenshots[activeScreenshot].title}
+                    <span className="screenshot-modal__counter">
+                      {activeScreenshot + 1} / {screenshots.length}
+                    </span>
+                    <div style={{ display: 'flex', gap: '8px', marginLeft: '12px' }}>
+                      <button
+                        type="button"
+                        className="screenshot-modal__nav"
+                        onClick={handleZoomOut}
+                        aria-label="Уменьшить"
+                      >
+                        −
+                      </button>
+                      <button
+                        type="button"
+                        className="screenshot-modal__nav"
+                        onClick={handleResetZoom}
+                        aria-label="Сбросить масштаб"
+                      >
+                        1×
+                      </button>
+                      <button
+                        type="button"
+                        className="screenshot-modal__nav"
+                        onClick={handleZoomIn}
+                        aria-label="Увеличить"
+                      >
+                        +
+                      </button>
+                    </div>
+            </div>
+          </div>
+                <button className="screenshot-modal__nav screenshot-modal__nav--next" onClick={handleNextScreenshot}>
                   ›
                 </button>
               </div>
@@ -1163,7 +1212,7 @@ const LandingPage = () => {
                 <button onClick={() => setStep('info')} className="btn-secondary" style={{ marginRight: '12px' }}>
                   ← {t('common.back')}
                 </button>
-                <button 
+                <button
                   onClick={() => setStep('register')} 
                   className="btn-primary"
                   style={{ padding: '14px 28px', fontSize: '16px' }}
@@ -1200,23 +1249,23 @@ const LandingPage = () => {
                           localStorage.setItem('shopId', shop.id)
                           navigate('/account')
                         }}
-                        style={{
+                  style={{
                           padding: '20px',
                           background: 'rgba(255, 255, 255, 0.03)',
                           border: '1px solid var(--border)',
                           borderRadius: '12px',
-                          cursor: 'pointer',
+                    cursor: 'pointer',
                           transition: 'all 0.3s'
-                        }}
-                        onMouseEnter={(e) => {
+                  }}
+                  onMouseEnter={(e) => {
                           e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)'
                           e.currentTarget.style.borderColor = 'var(--accent)'
-                        }}
-                        onMouseLeave={(e) => {
+                  }}
+                  onMouseLeave={(e) => {
                           e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)'
                           e.currentTarget.style.borderColor = 'var(--border)'
-                        }}
-                      >
+                  }}
+                >
                         <h4 style={{ color: 'var(--text)', marginBottom: '8px', fontSize: '18px' }}>{shop.name}</h4>
                         {shop.inn && <p style={{ color: 'var(--muted)', fontSize: '0.9rem', marginBottom: '4px' }}>ИНН: {shop.inn}</p>}
                         {shop.address && <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>{shop.address}</p>}
@@ -1226,8 +1275,8 @@ const LandingPage = () => {
                   <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
                     <button onClick={() => setStep('info')} className="btn-secondary">
                       {t('common.back')}
-                    </button>
-                    <button 
+                </button>
+                <button
                       onClick={() => {
                         setIsCreatingNewShop(true)
                         setStep('business-type')
@@ -1235,8 +1284,8 @@ const LandingPage = () => {
                       className="btn-primary"
                     >
                       Создать новый магазин
-                    </button>
-                  </div>
+                </button>
+              </div>
                 </>
               ) : (
                 <div style={{ textAlign: 'center', padding: '40px' }}>
@@ -1255,9 +1304,9 @@ const LandingPage = () => {
                     className="btn-secondary"
                     style={{ marginLeft: '12px' }}
                   >
-                    {t('common.back')}
-                  </button>
-                </div>
+                  {t('common.back')}
+                </button>
+              </div>
               )}
             </div>
           </div>

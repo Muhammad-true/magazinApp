@@ -14,11 +14,11 @@ const Subscription = () => {
         navigate('/shop-selection')
       } else {
         navigate('/register')
-      }
+    }
     } else {
       // Если shopId есть, переходим сразу на оплату
-      navigate('/payment')
-    }
+    navigate('/payment')
+  }
   }, [navigate])
   
   // Компонент только перенаправляет, поэтому возвращаем null

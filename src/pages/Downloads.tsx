@@ -5,7 +5,7 @@ import {
     DesktopIcon,
     PackageIcon,
     PhoneIcon,
-    PillIcon, StoreIcon
+    StoreIcon
 } from '../components/Icons'
 import './Downloads.css'
 
@@ -25,27 +25,6 @@ const Downloads = () => {
   const { t } = useTranslation()
 
   const downloadItems: DownloadItem[] = [
-    // Аптека
-    {
-      id: 'pharmacy-windows',
-      title: t('downloads.pharmacy.windows.title'),
-      description: t('downloads.pharmacy.windows.description'),
-      platform: 'windows',
-      version: '1.0.0',
-      size: '~150 MB',
-      icon: PillIcon,
-      comingSoon: false
-    },
-    {
-      id: 'pharmacy-android',
-      title: t('downloads.pharmacy.android.title'),
-      description: t('downloads.pharmacy.android.description'),
-      platform: 'android',
-      version: '1.0.0',
-      size: '~50 MB',
-      icon: PillIcon,
-      comingSoon: false
-    },
     // Магазин
     {
       id: 'shop-windows',
@@ -55,7 +34,8 @@ const Downloads = () => {
       version: '1.0.0',
       size: '~150 MB',
       icon: StoreIcon,
-      comingSoon: false
+      comingSoon: false,
+      downloadUrl: 'https://drive.google.com/file/d/1qtjAUGUOwYvNFNlIWr8Wd6sf25I1vrc0/view?usp=sharing'
     },
     {
       id: 'shop-android',
@@ -71,12 +51,25 @@ const Downloads = () => {
     {
       id: 'server-windows',
       title: t('downloads.server.windows.title'),
-      description: t('downloads.server.windows.description'),
+      description: 'Сервер с встроенным MySQL. При установке нужен пароль root MySQL (создайте/введите свой). Подходит, если БД не стоит.',
       platform: 'server',
       version: '1.0.0',
       size: '~200 MB',
       icon: DesktopIcon,
-      comingSoon: false
+      comingSoon: false,
+      downloadUrl: 'https://drive.google.com/file/d/1z_2OVIBJAnSPDEAwo54ejfo7qdWjwKoQ/view?usp=sharing'
+    },
+    // Сервер без встроенного MySQL (только сервер)
+    {
+      id: 'server-windows-lite',
+      title: 'Сервер без MySQL (Windows)',
+      description: 'Установите отдельно MySQL/PostgreSQL и используйте этот сервер',
+      platform: 'server',
+      version: '1.0.0',
+      size: '~180 MB',
+      icon: DesktopIcon,
+      comingSoon: false,
+      downloadUrl: 'https://drive.google.com/file/d/18cJ6uig05FM4YOPxhdmyWychmu-N9AJk/view?usp=sharing'
     },
     // Просто программа Windows
     {
@@ -145,7 +138,6 @@ const Downloads = () => {
     }
   }
 
-  const pharmacyItems = downloadItems.filter(item => item.id.includes('pharmacy'))
   const shopItems = downloadItems.filter(item => item.id.includes('shop'))
   const serverItems = downloadItems.filter(item => item.id.includes('server'))
   const standaloneItems = downloadItems.filter(item => item.id.includes('standalone'))
@@ -161,44 +153,6 @@ const Downloads = () => {
           <div>
             <h1 className="downloads-title">{t('downloads.title')}</h1>
             <p className="downloads-subtitle">{t('downloads.subtitle')}</p>
-          </div>
-        </div>
-
-        {/* Аптека */}
-        <div className="downloads-section">
-          <h2 className="section-title">
-            <span className="section-icon">
-              <PillIcon size={24} />
-            </span>
-            {t('downloads.pharmacy.title')}
-          </h2>
-          <p className="section-description">{t('downloads.pharmacy.description')}</p>
-          <div className="downloads-grid">
-            {pharmacyItems.map((item) => (
-              <div key={item.id} className="download-card">
-                <div className="download-card-header">
-                  <div className="download-icon">
-                    {React.createElement(item.icon, { size: 32, color: 'var(--accent)' })}
-                  </div>
-                  <div className="download-platform">
-                    {getPlatformIcon(item.platform)} {getPlatformName(item.platform)}
-                  </div>
-                </div>
-                <h3 className="download-card-title">{item.title}</h3>
-                <p className="download-card-description">{item.description}</p>
-                <div className="download-card-info">
-                  <span className="download-version">v{item.version}</span>
-                  <span className="download-size">{item.size}</span>
-                </div>
-                <button
-                  onClick={() => handleDownload(item)}
-                  className={`btn btn-primary download-btn ${item.comingSoon ? 'coming-soon' : ''}`}
-                  disabled={item.comingSoon}
-                >
-                  {item.comingSoon ? t('downloads.comingSoon') : t('downloads.download')}
-                </button>
-              </div>
-            ))}
           </div>
         </div>
 
@@ -246,7 +200,11 @@ const Downloads = () => {
             </span>
             {t('downloads.server.title')}
           </h2>
-          <p className="section-description">{t('downloads.server.description')}</p>
+          <p className="section-description">
+            Выберите подходящий сервер:
+            <br />• Уже есть MySQL/PostgreSQL → «Сервер без MySQL (Windows)», нужен ваш root пароль БД.
+            <br />• Базы нет → «Сервер с MySQL (Windows)», установщик поставит MySQL, введите свой root пароль при установке.
+          </p>
           <div className="downloads-grid">
             {serverItems.map((item) => (
               <div key={item.id} className="download-card">
