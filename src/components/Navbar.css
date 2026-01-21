@@ -52,6 +52,12 @@
   letter-spacing: -0.02em;
 }
 
+.brand-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
 .brand-tagline {
   font-size: 0.7rem;
   font-weight: 500;
@@ -63,6 +69,15 @@
 @media (max-width: 768px) {
   .brand-tagline {
     display: none;
+  }
+
+  .navbar-content {
+    flex-direction: row-reverse;
+  }
+
+  .brand-logo {
+    width: 32px;
+    height: 32px;
   }
 }
 

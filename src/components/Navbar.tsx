@@ -56,8 +56,8 @@ const Navbar = () => {
         <div className="container">
           <div className="navbar-content">
             <Link to="/" className="navbar-brand" onClick={handleLinkClick}>
-              <StoreIcon size={28} className="brand-icon" />
-              <span className="brand-text">MagazinApp</span>
+              <img src="/assets/logo.png" alt="Libbis POS" className="brand-logo" />
+              <span className="brand-text">Libbis POS</span>
             </Link>
 
             {!mobile && (
@@ -143,31 +143,15 @@ const Navbar = () => {
               )}
               
               {mobile && (
-                <>
-                  <button 
-                    className="mobile-nav-btn"
-                    onClick={toggleMenu}
-                    title={t('nav.pricing')}
-                  >
-                    <MoneyIcon size={20} />
-                  </button>
-                  <button 
-                    className="mobile-nav-btn"
-                    onClick={toggleMenu}
-                    title={t('nav.downloads')}
-                  >
-                    <DownloadIcon size={20} />
-                  </button>
-                  <button 
-                    className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-                    onClick={toggleMenu}
-                    aria-label="Menu"
-                  >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </button>
-                </>
+                <button 
+                  className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+                  onClick={toggleMenu}
+                  aria-label="Menu"
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
               )}
             </div>
           </div>
