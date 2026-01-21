@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 import {
     BookIcon,
     ChartIcon,
-    CheckIcon,
     CopyIcon,
     LockIcon,
     MoneyIcon, PackageIcon,
@@ -267,7 +266,7 @@ const LandingPage = () => {
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     if (e.touches.length === 2) {
-      const [t1, t2] = e.touches
+      const [t1, t2] = Array.from(e.touches)
       const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
       pinchState.current = { initialDistance: dist, initialZoom: screenshotZoom }
     }
@@ -276,7 +275,7 @@ const LandingPage = () => {
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (e.touches.length === 2 && pinchState.current) {
       e.preventDefault()
-      const [t1, t2] = e.touches
+      const [t1, t2] = Array.from(e.touches)
       const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
       const nextZoom = clampZoom(pinchState.current.initialZoom * (dist / pinchState.current.initialDistance))
       setScreenshotZoom(nextZoom)
@@ -615,7 +614,6 @@ const LandingPage = () => {
                   <button 
                     onClick={(e) => {
                       e.stopPropagation()
-                      setBusinessType('clothing')
                       setStep('business-type')
                     }}
                     className="cta-button"

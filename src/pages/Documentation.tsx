@@ -5,7 +5,6 @@ import {
     CalendarIcon,
     ChartIcon,
     CheckIcon,
-    ConstructionIcon,
     CopyIcon,
     CreditCardIcon,
     DesktopIcon,
