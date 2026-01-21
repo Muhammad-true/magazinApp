@@ -9,7 +9,7 @@ import {
     LockIcon,
     MoneyIcon, PackageIcon,
     PhoneIcon,
-    PillIcon, ShirtIcon,
+    ShirtIcon,
     TagIcon, UsersIcon
 } from '../components/Icons'
 import { apiService, City, RegisterData, ShopData } from '../services/api'
@@ -38,7 +38,6 @@ const LandingPage = () => {
   //   }
   // }
   const [step, setStep] = useState<'info' | 'business-type' | 'register' | 'shop-selection' | 'success'>('info')
-  const [businessType, setBusinessType] = useState<'pharmacy' | 'clothing' | ''>('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string>('')
   const [shops, setShops] = useState<ShopData[]>([])
@@ -524,7 +523,7 @@ const LandingPage = () => {
                 margin: '0 auto',
                 lineHeight: '1.6'
               }}>
-                У нас есть специализированные решения для разных типов бизнеса
+                Libbis POS — современная система только для магазинов
               </p>
             </div>
 
@@ -537,116 +536,7 @@ const LandingPage = () => {
             }}
             className="products-grid"
             >
-              {/* Аптека */}
-              <div 
-                style={{
-                  background: 'var(--glass)',
-                  backdropFilter: 'blur(14px)',
-                  borderRadius: 'var(--radius)',
-                  border: '2px solid rgba(255, 255, 255, 0.1)',
-                  padding: '40px',
-                  transition: 'all 0.3s ease',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-8px)'
-                  e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.5)'
-                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(59, 130, 246, 0.2)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'
-                  e.currentTarget.style.boxShadow = 'none'
-                }}
-              >
-                <div style={{ 
-                  fontSize: '5rem', 
-                  marginBottom: '24px',
-                  textAlign: 'center'
-                }}>💊</div>
-                <h2 style={{ 
-                  fontSize: '32px', 
-                  fontWeight: 700, 
-                  color: 'var(--text)', 
-                  marginBottom: '16px',
-                  textAlign: 'center'
-                }}>
-                  MagazinApp для Аптек
-                </h2>
-                <p style={{ 
-                  color: 'var(--muted)', 
-                  fontSize: '16px', 
-                  lineHeight: '1.6',
-                  marginBottom: '24px',
-                  textAlign: 'center'
-                }}>
-                  Специализированная система для аптек с учетом всех требований фармацевтического бизнеса
-                </p>
-                <ul style={{ 
-                  listStyle: 'none', 
-                  padding: 0, 
-                  margin: '0 0 24px 0',
-                  color: 'var(--muted)',
-                  fontSize: '14px'
-                }}>
-                  <li style={{ marginBottom: '10px', paddingLeft: '24px', position: 'relative', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <CheckIcon size={16} color="var(--accent)" />
-                    Справочник лекарственных средств
-                  </li>
-                  <li style={{ marginBottom: '10px', paddingLeft: '24px', position: 'relative', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <CheckIcon size={16} color="var(--accent)" />
-                    Учет рецептов и контроль серий
-                  </li>
-                  <li style={{ marginBottom: '10px', paddingLeft: '24px', position: 'relative', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <CheckIcon size={16} color="var(--accent)" />
-                    Контроль сроков годности
-                  </li>
-                  <li style={{ marginBottom: '10px', paddingLeft: '24px', position: 'relative', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <CheckIcon size={16} color="var(--accent)" />
-                    Маркировка и дозировки
-                  </li>
-                </ul>
-                <div style={{ display: 'flex', gap: '12px', flexDirection: 'column' }}>
-                  <button 
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      setBusinessType('pharmacy')
-                      setStep('business-type')
-                    }}
-                    className="cta-button"
-                    style={{ 
-                      width: '100%',
-                      padding: '16px 32px',
-                      fontSize: '18px',
-                      fontWeight: 600
-                    }}
-                  >
-                    Выбрать для аптеки →
-                  </button>
-                  <Link 
-                    to="/documentation?type=pharmacy"
-                    onClick={(e) => e.stopPropagation()}
-                    className="cta-button ghost"
-                    style={{ 
-                      width: '100%',
-                      padding: '14px 32px',
-                      fontSize: '16px',
-                      fontWeight: 500,
-                      textAlign: 'center',
-                      textDecoration: 'none',
-                      display: 'block'
-                    }}
-                  >
-                    <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
-                      <BookIcon size={20} />
-                    </span>
-                    Обучение для аптек
-                  </Link>
-                </div>
-              </div>
-
-              {/* Магазин одежды */}
+              {/* Магазин */}
               <div 
                 style={{
                 background: 'var(--glass)',
@@ -739,7 +629,7 @@ const LandingPage = () => {
                     Выбрать для магазина →
                   </button>
                   <Link 
-                    to="/documentation?type=clothing"
+                    to="/documentation"
                     onClick={(e) => e.stopPropagation()}
                     className="cta-button ghost"
                     style={{ 
@@ -782,7 +672,7 @@ const LandingPage = () => {
           {/* Features */}
           <h2 id="features" className="section-title">{t('features.title')}</h2>
           <p style={{ textAlign: 'center', color: 'var(--muted)', fontSize: '16px', marginBottom: '50px', maxWidth: '700px', margin: '0 auto 50px', lineHeight: '1.6' }}>
-            Полнофункциональная система управления для магазинов и аптек с современным интерфейсом и мощными возможностями
+            Полнофункциональная система управления для магазинов с современным интерфейсом и мощными возможностями
           </p>
           <div className="features-grid">
             <div className="feature-item">
@@ -811,20 +701,6 @@ const LandingPage = () => {
                 <li>Списание и корректировки</li>
                 <li>Инвентаризация склада</li>
                 <li>Аналитика и отчеты</li>
-              </ul>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">
-                <PillIcon size={32} color="var(--accent)" />
-              </div>
-              <h3>{t('features.pharmacy.title')}</h3>
-              <p>{t('features.pharmacy.desc')}</p>
-              <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
-                <li>Справочник лекарственных средств</li>
-                <li>Учет рецептов</li>
-                <li>Контроль серий и сроков годности</li>
-                <li>Маркировка товаров</li>
-                <li>Управление дозировками</li>
               </ul>
             </div>
             <div className="feature-item">
@@ -1163,45 +1039,26 @@ const LandingPage = () => {
           <div className="container">
             <div className="form-container">
               <h2 style={{ fontSize: '32px', marginBottom: '12px' }}>
-                {businessType === 'pharmacy' ? (
-                  <>
-                    <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
-                      <PillIcon size={20} />
-                    </span>
-                    Регистрация для аптеки
-                  </>
-                ) : (
-                  <>
-                    <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
-                      <ShirtIcon size={20} />
-                    </span>
-                    Регистрация для магазина
-                  </>
-                )}
+                <>
+                  <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+                    <ShirtIcon size={20} />
+                  </span>
+                  Регистрация для магазина
+                </>
               </h2>
               <p style={{ textAlign: 'center', color: 'var(--muted)', marginBottom: '40px', fontSize: '16px' }}>
-                {businessType === 'pharmacy' 
-                  ? 'Создайте аккаунт и начните использовать специализированную систему для аптек'
-                  : 'Создайте аккаунт и начните использовать систему для магазинов'}
+                Создайте аккаунт и начните использовать систему для магазинов
               </p>
               <div style={{ 
-                background: businessType === 'pharmacy' 
-                  ? 'rgba(59, 130, 246, 0.1)' 
-                  : 'rgba(34, 197, 94, 0.1)',
+                background: 'rgba(34, 197, 94, 0.1)',
                 padding: '20px',
                 borderRadius: '12px',
-                border: `1px solid ${businessType === 'pharmacy' 
-                  ? 'rgba(59, 130, 246, 0.2)' 
-                  : 'rgba(34, 197, 94, 0.2)'}`,
+                border: '1px solid rgba(34, 197, 94, 0.2)',
                 marginBottom: '32px',
                 textAlign: 'center'
               }}>
                 <div style={{ fontSize: '3rem', marginBottom: '12px' }}>
-                  {businessType === 'pharmacy' ? (
-                    <PillIcon size={24} color="var(--accent)" />
-                  ) : (
-                    <ShirtIcon size={24} color="var(--accent)" />
-                  )}
+                  <ShirtIcon size={24} color="var(--accent)" />
                 </div>
                 <h3 style={{ 
                   color: 'var(--text)', 
@@ -1209,12 +1066,10 @@ const LandingPage = () => {
                   fontWeight: 600,
                   marginBottom: '8px'
                 }}>
-                  {businessType === 'pharmacy' ? 'MagazinApp для Аптек' : 'MagazinApp для Магазинов'}
+                  Libbis POS для магазинов
                 </h3>
                 <p style={{ color: 'var(--muted)', fontSize: '14px', margin: 0 }}>
-                  {businessType === 'pharmacy' 
-                    ? 'Специализированная система с учетом всех требований фармацевтического бизнеса'
-                    : 'Универсальная система для управления магазином одежды и других товаров'}
+                  Универсальная система для управления магазином одежды и других товаров
                 </p>
               </div>
               <div style={{ textAlign: 'center', marginTop: '32px' }}>

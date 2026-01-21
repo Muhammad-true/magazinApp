@@ -76,7 +76,7 @@ const Home = () => {
       <section className="section screenshots-section">
         <div className="container">
           <h2 className="section-title">Скриншоты приложения</h2>
-          <p className="section-subtitle">Посмотрите, как выглядит приложение для магазинов и аптек</p>
+          <p className="section-subtitle">Посмотрите, как выглядит приложение для магазинов</p>
           
           <div className="screenshots-grid">
             <div className="screenshot-card">

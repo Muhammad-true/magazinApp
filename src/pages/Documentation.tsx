@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
     CalendarIcon,
     ChartIcon,
@@ -17,7 +17,6 @@ import {
     MoneyIcon,
     PackageIcon,
     PhoneIcon,
-    PillIcon,
     PlayIcon,
     RocketIcon,
     SearchIcon,
@@ -31,59 +30,8 @@ import './Documentation.css'
 
 const Documentation = () => {
   const { t } = useTranslation()
-  const [searchParams] = useSearchParams()
-  const businessType = searchParams.get('type') || 'clothing' // 'pharmacy' или 'clothing'
   const [activeSection, setActiveSection] = useState<string>('getting-started')
 
-  // Если выбрана аптека - показываем сообщение "скоро будет"
-  if (businessType === 'pharmacy') {
-    return (
-      <div className="documentation-page">
-        <div className="container">
-          <div className="docs-header">
-            <Link to="/" className="btn-back">
-              ← {t('nav.home')}
-            </Link>
-            <div>
-              <h1 className="docs-title">
-                <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '12px' }}>
-                  <PillIcon size={32} />
-                </span>
-                Обучение для аптек
-              </h1>
-              <p className="docs-subtitle">Руководство по работе с системой</p>
-            </div>
-          </div>
-          
-          <div className="coming-soon-container">
-            <div className="coming-soon-icon">
-              <ConstructionIcon size={64} color="var(--accent)" />
-            </div>
-            <h2 className="coming-soon-title">
-              Скоро будет доступно!
-            </h2>
-            <p className="coming-soon-text">
-              Мы работаем над созданием подробного руководства для аптек. 
-              Оно будет включать все необходимые инструкции с простыми объяснениями и иконками.
-            </p>
-            <div className="coming-soon-note">
-              <p>
-                <span style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
-                  <LightbulbIcon size={20} />
-                </span>
-                <strong>Следите за обновлениями!</strong> Руководство появится в ближайшее время.
-              </p>
-            </div>
-            <Link to="/documentation?type=clothing" className="btn btn-primary coming-soon-link">
-              Посмотреть руководство для магазинов →
-            </Link>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  // Для магазина одежды - полное руководство
   const sections = [
     { id: 'getting-started', label: 'Начало работы', icon: RocketIcon },
     { id: 'cashier', label: 'Работа с кассой', icon: MoneyIcon },
