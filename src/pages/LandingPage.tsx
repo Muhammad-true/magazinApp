@@ -478,7 +478,7 @@ const LandingPage = () => {
       </div>
 
       {step === 'info' && (
-        <div className="container">
+        <div className="container landing-snap">
           {/* Header */}
           <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 0' }}>
             <div className="logo" style={{ fontSize: '24px', fontWeight: 700, background: 'linear-gradient(135deg, var(--accent), var(--accent2))', WebkitBackgroundClip: 'text', color: 'transparent' }}>
@@ -488,7 +488,7 @@ const LandingPage = () => {
               <a href="#features" style={{ color: 'var(--muted)', fontSize: '15px', cursor: 'pointer' }}>{t('nav.features')}</a>
               <a href="#pricing" style={{ color: 'var(--muted)', fontSize: '15px', cursor: 'pointer' }}>{t('nav.pricing')}</a>
               <Link to="/downloads" style={{ color: 'var(--muted)', fontSize: '15px', cursor: 'pointer' }}>{t('nav.downloads')}</Link>
-              <Link to="/documentation?type=clothing" style={{ color: 'var(--muted)', fontSize: '15px', cursor: 'pointer' }}>{t('nav.documentation')}</Link>
+              <Link to="/documentation" style={{ color: 'var(--muted)', fontSize: '15px', cursor: 'pointer' }}>{t('nav.documentation')}</Link>
               {isAuthenticated ? (
                 <Link to="/account" style={{ color: 'var(--accent)', fontSize: '15px', cursor: 'pointer', fontWeight: 500 }}>{t('nav.account')}</Link>
               ) : (
@@ -501,7 +501,7 @@ const LandingPage = () => {
           </header>
 
           {/* Product Selection Section */}
-          <section style={{ marginTop: '60px', marginBottom: '80px' }}>
+          <section className="snap-section" style={{ marginTop: '60px', marginBottom: '80px' }}>
             <div style={{ textAlign: 'center', marginBottom: '50px' }}>
               <h1 style={{ 
                 fontSize: '48px', 
@@ -668,120 +668,122 @@ const LandingPage = () => {
           </section>
 
           {/* Features */}
-          <h2 id="features" className="section-title">{t('features.title')}</h2>
-          <p style={{ textAlign: 'center', color: 'var(--muted)', fontSize: '16px', marginBottom: '50px', maxWidth: '700px', margin: '0 auto 50px', lineHeight: '1.6' }}>
-            Полнофункциональная система управления для магазинов с современным интерфейсом и мощными возможностями
-          </p>
-          <div className="features-grid">
-            <div className="feature-item">
-              <div className="feature-icon">
-                <MoneyIcon size={32} color="var(--accent)" />
+          <section className="snap-section" id="features" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
+            <h2 className="section-title">{t('features.title')}</h2>
+            <p style={{ textAlign: 'center', color: 'var(--muted)', fontSize: '16px', marginBottom: '50px', maxWidth: '700px', margin: '0 auto 50px', lineHeight: '1.6' }}>
+              Полнофункциональная система управления для магазинов с современным интерфейсом и мощными возможностями
+            </p>
+            <div className="features-grid">
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <MoneyIcon size={32} color="var(--accent)" />
+                </div>
+                <h3>{t('features.sales.title')}</h3>
+                <p>{t('features.sales.desc')}</p>
+                <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
+                  <li>Быстрая продажа товаров</li>
+                  <li>Поддержка сканеров штрих-кодов</li>
+                  <li>Печать чеков и накладных</li>
+                  <li>Обработка возвратов</li>
+                  <li>Работа в офлайн-режиме</li>
+                </ul>
               </div>
-              <h3>{t('features.sales.title')}</h3>
-              <p>{t('features.sales.desc')}</p>
-              <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
-                <li>Быстрая продажа товаров</li>
-                <li>Поддержка сканеров штрих-кодов</li>
-                <li>Печать чеков и накладных</li>
-                <li>Обработка возвратов</li>
-                <li>Работа в офлайн-режиме</li>
-              </ul>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">
-                <PackageIcon size={32} color="var(--accent)" />
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <PackageIcon size={32} color="var(--accent)" />
+                </div>
+                <h3>{t('features.warehouse.title')}</h3>
+                <p>{t('features.warehouse.desc')}</p>
+                <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
+                  <li>Учет остатков товаров</li>
+                  <li>Управление поставками</li>
+                  <li>Списание и корректировки</li>
+                  <li>Инвентаризация склада</li>
+                  <li>Аналитика и отчеты</li>
+                </ul>
               </div>
-              <h3>{t('features.warehouse.title')}</h3>
-              <p>{t('features.warehouse.desc')}</p>
-              <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
-                <li>Учет остатков товаров</li>
-                <li>Управление поставками</li>
-                <li>Списание и корректировки</li>
-                <li>Инвентаризация склада</li>
-                <li>Аналитика и отчеты</li>
-              </ul>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">
-                <ChartIcon size={32} color="var(--accent)" />
-          </div>
-              <h3>Отчеты и аналитика</h3>
-              <p>Детальная аналитика продаж и движения товаров</p>
-              <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
-                <li>Отчеты по продажам</li>
-                <li>Анализ прибыльности</li>
-                <li>Топ товаров и категорий</li>
-                <li>Статистика по периодам</li>
-                <li>Экспорт данных</li>
-              </ul>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">☁️</div>
-              <h3>Облачная синхронизация</h3>
-              <p>Доступ к данным с любого устройства</p>
-              <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
-                <li>Автоматическая синхронизация</li>
-                <li>Резервное копирование данных</li>
-                <li>Мультиустройственный доступ</li>
-                <li>История изменений</li>
-                <li>Безопасное хранение</li>
-              </ul>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">
-                <TagIcon size={32} color="var(--accent)" />
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <ChartIcon size={32} color="var(--accent)" />
+                </div>
+                <h3>Отчеты и аналитика</h3>
+                <p>Детальная аналитика продаж и движения товаров</p>
+                <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
+                  <li>Отчеты по продажам</li>
+                  <li>Анализ прибыльности</li>
+                  <li>Топ товаров и категорий</li>
+                  <li>Статистика по периодам</li>
+                  <li>Экспорт данных</li>
+                </ul>
               </div>
-              <h3>Маркировка и печать</h3>
-              <p>Профессиональная маркировка товаров</p>
-              <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
-                <li>Печать ценников</li>
-                <li>Генерация штрих-кодов</li>
-                <li>Этикетки для товаров</li>
-                <li>Настройка шаблонов</li>
-                <li>Пакетная печать</li>
-              </ul>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">
-                <UsersIcon size={32} color="var(--accent)" />
+              <div className="feature-item">
+                <div className="feature-icon">☁️</div>
+                <h3>Облачная синхронизация</h3>
+                <p>Доступ к данным с любого устройства</p>
+                <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
+                  <li>Автоматическая синхронизация</li>
+                  <li>Резервное копирование данных</li>
+                  <li>Мультиустройственный доступ</li>
+                  <li>История изменений</li>
+                  <li>Безопасное хранение</li>
+                </ul>
               </div>
-              <h3>Управление персоналом</h3>
-              <p>Контроль работы сотрудников</p>
-              <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
-                <li>Учет рабочего времени</li>
-                <li>Разграничение прав доступа</li>
-                <li>Отчеты по продавцам</li>
-                <li>Система ролей</li>
-                <li>История операций</li>
-              </ul>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">💳</div>
-              <h3>Финансы и платежи</h3>
-              <p>Полный финансовый учет</p>
-              <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
-                <li>Учет наличных и безнала</li>
-                <li>Интеграция с платежными системами</li>
-                <li>Кассовые смены</li>
-                <li>Финансовые отчеты</li>
-                <li>Контроль задолженностей</li>
-              </ul>
-            </div>
-            <div className="feature-item">
-              <div className="feature-icon">
-                <PhoneIcon size={32} color="var(--accent)" />
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <TagIcon size={32} color="var(--accent)" />
+                </div>
+                <h3>Маркировка и печать</h3>
+                <p>Профессиональная маркировка товаров</p>
+                <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
+                  <li>Печать ценников</li>
+                  <li>Генерация штрих-кодов</li>
+                  <li>Этикетки для товаров</li>
+                  <li>Настройка шаблонов</li>
+                  <li>Пакетная печать</li>
+                </ul>
               </div>
-              <h3>Мобильное приложение</h3>
-              <p>Работайте с любого устройства</p>
-              <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
-                <li>Приложение для Android и iOS</li>
-                <li>Полный функционал на мобильных</li>
-                <li>Удобный интерфейс</li>
-                <li>Быстрая работа</li>
-                <li>Офлайн-режим</li>
-              </ul>
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <UsersIcon size={32} color="var(--accent)" />
+                </div>
+                <h3>Управление персоналом</h3>
+                <p>Контроль работы сотрудников</p>
+                <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
+                  <li>Учет рабочего времени</li>
+                  <li>Разграничение прав доступа</li>
+                  <li>Отчеты по продавцам</li>
+                  <li>Система ролей</li>
+                  <li>История операций</li>
+                </ul>
+              </div>
+              <div className="feature-item">
+                <div className="feature-icon">💳</div>
+                <h3>Финансы и платежи</h3>
+                <p>Полный финансовый учет</p>
+                <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
+                  <li>Учет наличных и безнала</li>
+                  <li>Интеграция с платежными системами</li>
+                  <li>Кассовые смены</li>
+                  <li>Финансовые отчеты</li>
+                  <li>Контроль задолженностей</li>
+                </ul>
+              </div>
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <PhoneIcon size={32} color="var(--accent)" />
+                </div>
+                <h3>Мобильное приложение</h3>
+                <p>Работайте с любого устройства</p>
+                <ul style={{ marginTop: '12px', paddingLeft: '20px', color: 'var(--muted)', fontSize: '14px', lineHeight: '1.8' }}>
+                  <li>Приложение для Android и iOS</li>
+                  <li>Полный функционал на мобильных</li>
+                  <li>Удобный интерфейс</li>
+                  <li>Быстрая работа</li>
+                  <li>Офлайн-режим</li>
+                </ul>
+              </div>
             </div>
-          </div>
+          </section>
 
           {/* Получение ключа */}
           <h2 id="pricing" className="section-title">Тарифы и получение ключа</h2>
@@ -897,11 +899,12 @@ const LandingPage = () => {
           </div>
 
           {/* Screenshots Gallery */}
-          <h2 id="screenshots" className="section-title">Интерфейс приложения</h2>
-          <p style={{ textAlign: 'center', color: 'var(--muted)', fontSize: '16px', marginBottom: '50px', maxWidth: '700px', margin: '0 auto 50px', lineHeight: '1.6' }}>
-            Посмотрите, как выглядит наше приложение изнутри
-          </p>
-          <div className="screenshots-container">
+          <section className="snap-section" id="screenshots" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
+            <h2 className="section-title">Интерфейс приложения</h2>
+            <p style={{ textAlign: 'center', color: 'var(--muted)', fontSize: '16px', marginBottom: '50px', maxWidth: '700px', margin: '0 auto 50px', lineHeight: '1.6' }}>
+              Посмотрите, как выглядит наше приложение изнутри
+            </p>
+            <div className="screenshots-container">
             {screenshots.map((screenshot, index) => (
               <div
                 key={screenshot.id}
@@ -975,7 +978,8 @@ const LandingPage = () => {
                 </div>
               </div>
             ))}
-          </div>
+            </div>
+          </section>
 
           {activeScreenshot !== null && (
             <div className="screenshot-modal" onClick={handleCloseScreenshot}>
